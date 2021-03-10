@@ -1,0 +1,84 @@
+//=====================================================================================
+//
+// Finite State Machine
+// Sourced From Quartus II Sample FSM
+//
+//		Original Comments:
+//		 SystemVerilog state machine implementation that uses enumerated types.
+//		 Altera recommends using this coding style to describe state machines in SystemVerilog.
+//		 In Quartus II integrated synthesis, the enumerated type
+//		 that defines the states for the state machine must be
+//		 of an unsigned integer type. If you do not specify the
+//		 enumerated type as int unsigned, a signed int type is used by default.
+//		 In this case, the Quartus II integrated synthesis synthesizes the design, but
+//		 does not infer or optimize the logic as a state machine.
+//
+// Changed Active LOW reset to Active HIGH reset
+//=====================================================================================
+
+// clk
+// counter
+// wren
+
+module task1 (	input clk, iterator,
+					output logic wren
+					);
+					
+	parameter END_OF_SONG = 32'h7FFFF;				
+	logic read_start, read_finish; // reconsider implementation to something with single variable and blocking
+	
+	reg [22:0] address_count;
+	
+	
+	// Defining states
+	enum int unsigned { 
+		START = 0, 
+		WAIT_PRIMARY = 1,
+		WAIT_SECONDARY = 2,
+		READ = 3,
+		COMPLETION = 4
+
+	} state, next_state;		
+			
+	always_comb begin : next_state_logic 
+	next_state = START;
+		case(state)
+				START: 
+				begin
+					next_state = WAIT_PRIMARY;
+				end 
+				
+			default: next_state = START;
+		endcase
+	end
+	
+	always_comb 
+	begin 
+			case(state)
+				START: 
+				begin	
+
+				end
+				
+				default: // If something goes wrong, default Read State
+				begin
+
+				end
+			endcase
+	end
+	
+	// Handle resets
+	always_ff@(posedge clk or posedge reset)
+	begin
+		if(reset)
+		begin
+
+		end
+		
+		// If not resetting, normal operation
+		else
+		begin
+			
+		end
+	end
+endmodule

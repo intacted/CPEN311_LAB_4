@@ -1,0 +1,32 @@
+module ksa(
+    input CLOCK_50, // -- Clock pin
+    input[3:0] KEY, // -- push button switches
+    input[9:0] SW,       // -- slider switches
+    output logic LEDR : out [9:0];  -- red lights
+    output logic HEX0 : out [6:0];
+    output logic HEX1 : out [6:0];
+    output logic HEX2 : out [6:0];
+    output logic HEX3 : out [6:0];
+    output logic HEX4 : out [6:0];
+    output logic HEX5 : out [6:0]
+);
+end ksa;
+
+architecture rtl of ksa is
+   COMPONENT SevenSegmentDisplayDecoder IS
+    PORT
+    (
+        ssOut : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
+        nIn : IN STD_LOGIC_VECTOR (3 DOWNTO 0)
+    );
+    END COMPONENT;
+   
+    -- clock and reset signals  
+	 signal clk, reset_n : std_logic;										
+
+begin
+
+    clk <= CLOCK_50;
+    reset_n <= KEY(3);
+
+end RTL;
