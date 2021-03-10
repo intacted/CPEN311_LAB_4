@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2021.03.09.21:55:40"
- outputDirectory="E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/db/ip/sld73f98f60/">
+ date="2021.03.09.22:33:39"
+ outputDirectory="E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/db/ip/sld73f98f60/">
  <perimeter>
   <parameter
      name="DESIGN_HASH"
@@ -81,24 +81,24 @@
   <parameter name="MIRROR" value="0" />
   <generatedFiles>
    <file
-       path="E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/db/ip/sld73f98f60/alt_sld_fab.v"
+       path="E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/db/ip/sld73f98f60/alt_sld_fab.v"
        type="VERILOG" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_presplit.sv"
+       path="E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_presplit.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_splitter.sv"
+       path="E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_splitter.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_sldfabric.vhd"
+       path="E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_sldfabric.vhd"
        type="VHDL"
        attributes="" />
    <file
-       path="E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_ident.sv"
+       path="E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_ident.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </childGeneratedFiles>
@@ -165,7 +165,7 @@
   <parameter name="RECEIVE_WIDTHS" value="28" />
   <generatedFiles>
    <file
-       path="E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_presplit.sv"
+       path="E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_presplit.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </generatedFiles>
@@ -195,7 +195,7 @@
   <parameter name="ADD_INTERFACE_ASGN" value="0" />
   <generatedFiles>
    <file
-       path="E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_splitter.sv"
+       path="E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_splitter.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </generatedFiles>
@@ -234,7 +234,7 @@
   <parameter name="FORCE_IR_CAPTURE_FEATURE" value="1" />
   <generatedFiles>
    <file
-       path="E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_sldfabric.vhd"
+       path="E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_sldfabric.vhd"
        type="VHDL"
        attributes="" />
   </generatedFiles>
@@ -262,7 +262,7 @@
   <parameter name="DESIGN_HASH" value="a505013975f02d7938b6" />
   <generatedFiles>
    <file
-       path="E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_ident.sv"
+       path="E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/db/ip/sld73f98f60/submodules/alt_sld_fab_ident.sv"
        type="SYSTEM_VERILOG"
        attributes="TOP_LEVEL_FILE" />
   </generatedFiles>

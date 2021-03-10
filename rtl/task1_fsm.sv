@@ -16,10 +16,6 @@
 // Changed Active LOW reset to Active HIGH reset
 //=====================================================================================
 
-// clk
-// counter
-// wren
-
 module task1_fsm (	input clk, reset,
 							output logic [7:0] iterator,
 							output logic wren

@@ -1,5 +1,5 @@
 Fitter report for rc4
-Tue Mar 09 21:56:33 2021
+Tue Mar 09 22:34:30 2021
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -66,7 +66,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------------+--------------------------------------------+
-; Fitter Status                   ; Successful - Tue Mar 09 21:56:33 2021      ;
+; Fitter Status                   ; Successful - Tue Mar 09 22:34:30 2021      ;
 ; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                   ; rc4                                        ;
 ; Top-level Entity Name           ; ksa                                        ;
@@ -154,13 +154,12 @@ agreement for further details.
 ; Number detected on machine ; 16          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 2.74        ;
+; Average used               ; 1.98        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;  12.8%      ;
-;     Processors 9-16        ;  10.6%      ;
+;     Processors 2-16        ;   6.5%      ;
 +----------------------------+-------------+
 
 
@@ -926,7 +925,7 @@ agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/output_files/rc4.pin.
+The pin-out file can be found in E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/output_files/rc4.pin.
 
 
 +------------------------------------------------------------------------------------------+
@@ -3275,7 +3274,7 @@ Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "VGA_R[7]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "VGA_SYNC_N" is assigned to location or region, but does not exist in design
     Warning (15706): Node "VGA_VS" is assigned to location or region, but does not exist in design
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:12
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:11
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:05
@@ -3286,24 +3285,24 @@ Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 4% of the available device resources in the region that extends from location X0_Y0 to location X10_Y10
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
-Info (11888): Total time spent on timing analysis during the Fitter is 0.89 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.88 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:05
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
-Info (144001): Generated suppressed messages file E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/output_files/rc4.fit.smsg
+Info (144001): Generated suppressed messages file E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/output_files/rc4.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 193 warnings
-    Info: Peak virtual memory: 7813 megabytes
-    Info: Processing ended: Tue Mar 09 21:56:34 2021
-    Info: Elapsed time: 00:00:49
-    Info: Total CPU time (on all processors): 00:03:37
+    Info: Peak virtual memory: 7805 megabytes
+    Info: Processing ended: Tue Mar 09 22:34:31 2021
+    Info: Elapsed time: 00:00:48
+    Info: Total CPU time (on all processors): 00:03:40
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in E:/Courses/CPEN311/Ebi/Labs/Lab4/rtl/output_files/rc4.fit.smsg.
+The suppressed messages can be found in E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/output_files/rc4.fit.smsg.
 
 
