@@ -31,7 +31,7 @@ module ksa(
    assign clk = CLOCK_50;
    assign reset_n = KEY[3];
 	 
-	task1_fsm pass_through_values(
+	task2_fsm pass_through_values(
 		.clk(clk),
 		.iterator(iterator),
 		.reset(reset_n),

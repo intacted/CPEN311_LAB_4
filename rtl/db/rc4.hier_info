@@ -82,7 +82,7 @@ nIn[2] => Decoder0.IN1
 nIn[3] => Decoder0.IN0
 
 
-|ksa|task1_fsm:pass_through_values
+|ksa|task2_fsm:pass_through_values
 clk => iterator[0]~reg0.CLK
 clk => iterator[1]~reg0.CLK
 clk => iterator[2]~reg0.CLK
