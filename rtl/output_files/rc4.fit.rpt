@@ -1,5 +1,5 @@
 Fitter report for rc4
-Thu Mar 11 17:31:48 2021
+Thu Mar 11 17:52:19 2021
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -66,7 +66,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------------+--------------------------------------------+
-; Fitter Status                   ; Successful - Thu Mar 11 17:31:48 2021      ;
+; Fitter Status                   ; Successful - Thu Mar 11 17:52:18 2021      ;
 ; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                   ; rc4                                        ;
 ; Top-level Entity Name           ; ksa                                        ;
@@ -154,13 +154,13 @@ agreement for further details.
 ; Number detected on machine ; 16          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.98        ;
+; Average used               ; 2.34        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   7.5%      ;
-;     Processors 9-16        ;   5.7%      ;
+;     Processors 2-8         ;  10.0%      ;
+;     Processors 9-16        ;   8.0%      ;
 +----------------------------+-------------+
 
 
@@ -3281,7 +3281,7 @@ Info (14951): The Fitter is using Advanced Physical Optimization.
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:05
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:14
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:15
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 4% of the available device resources in the region that extends from location X0_Y0 to location X10_Y10
@@ -3291,14 +3291,14 @@ Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:06
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:05
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/output_files/rc4.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 193 warnings
-    Info: Peak virtual memory: 7814 megabytes
-    Info: Processing ended: Thu Mar 11 17:31:49 2021
-    Info: Elapsed time: 00:00:55
-    Info: Total CPU time (on all processors): 00:03:47
+    Info: Peak virtual memory: 7834 megabytes
+    Info: Processing ended: Thu Mar 11 17:52:19 2021
+    Info: Elapsed time: 00:00:52
+    Info: Total CPU time (on all processors): 00:03:51
 
 
 +----------------------------+

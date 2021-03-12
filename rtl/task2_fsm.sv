@@ -17,7 +17,8 @@
 //=====================================================================================
 
 module task2_fsm (	input clk, reset,
-							output logic [7:0] iterator,
+							input [7:0] secret_key, q,
+							output logic [7:0] iterator, 
 							output logic wren
 						);
 					

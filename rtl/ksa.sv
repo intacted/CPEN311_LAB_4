@@ -22,8 +22,8 @@ module ksa(
 	//SevenSegmentDisplayDecoder  sevenseg4 (.ssOut(HEX4),.nIn(sseg[19:16]));
 	//SevenSegmentDisplayDecoder  sevenseg5 (.ssOut(HEX5),.nIn(sseg[23:20]));  
    
-	logic [7:0] iterator;
-	logic q, wren;	
+	logic [7:0] iterator, q;
+	logic wren;	
 
 	// -- clock and reset signals  
 	logic clk, reset_n;										
@@ -32,9 +32,14 @@ module ksa(
    assign reset_n = KEY[3];
 	 
 	task2_fsm pass_through_values(
+		// Inputs
 		.clk(clk),
-		.iterator(iterator),
 		.reset(reset_n),
+		.secret_key(),
+		.q(q),
+		
+		// Outputs
+		.iterator(iterator),
 		.wren(wren)
 	);
 	 
