@@ -30,12 +30,13 @@ module ksa(
 
    assign clk = CLOCK_50;
    assign reset_n = KEY[3];
+	parameter logic [7:0] key [2:0]= '{8'h49,8'h02, 8'h00};
 	 
 	task2_fsm pass_through_values(
 		// Inputs
 		.clk(clk),
 		.reset(reset_n),
-		.secret_key(),
+		.secret_key(key),
 		.q(q),
 		
 		// Outputs

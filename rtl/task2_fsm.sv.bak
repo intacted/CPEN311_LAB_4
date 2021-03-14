@@ -16,92 +16,74 @@
 // Changed Active LOW reset to Active HIGH reset
 //=====================================================================================
 
-module task1_fsm (	input clk, reset,
-							output logic [7:0] iterator,
+module task2_fsm (	input clk, reset,
+							input [23:0] secret_key,
+							input [7:0] q,
+							output logic [7:0] iterator, 
 							output logic wren
 						);
 					
-	parameter END_OF_MSG = 8'hFF;				
-	
-	// Defining states
-	enum int unsigned { 
-		START = 0, 
-		ITERATE = 1,
-		COMPLETION = 2
-		
-	} state, next_state;		
-	
-	// Defining next_state order
-	always_comb begin : next_state_logic 
-	next_state = START;
-		case(state)
-				START: 
-				begin
-					next_state = ITERATE;
-				end 
-				
-				ITERATE: 
-				begin
-					next_state = (iterator == END_OF_MSG) ? COMPLETION : ITERATE;
-				end 
-				
-				COMPLETION: 
-				begin
-					next_state = COMPLETION;
-				end 
-				
-			default: next_state = START;
-		endcase
-	end
-	
-	// Defining output values
-	always_comb 
-	begin 
-			case(state)
-				START: 
-				begin	
-					wren <= 0;
-				end
-				
-				ITERATE: 
-				begin	
-					wren <= 1;
-				end
-				
-				COMPLETION: 
-				begin	
-					wren <= 0;
-				end
-				
-				default: // If something goes wrong, default START State value
-				begin
-					wren <= 0;
-				end
-			endcase
-	end
-	
-	// Handle resets and updating state to next_state
-	always_ff@(posedge clk or posedge reset)
-	begin
-		if(reset)
-		begin
-			state <= START;
-			iterator <= 8'h00;
+reg [7:0] iterator_j;
+parameter END_OF_MSG = 8'hFF;
+
+//Working_mem RAM1(.wen(wen), .q(q), .data(data), .address(addr));
+
+//decrypted_msg RAM2 (.address(addr_d), .data(data_d), .wren(wren_d));
+
+//encrypted_msg ROM (.q(q_m), .address (addr_m));
+
+    reg [7:0]   state;
+                                                  //7654_3210
+    parameter [7:0] start                       =8'b0000_0001;
+    parameter [7:0] Iterate_i                   =8'b0001_0010;
+    parameter [7:0] reset_i                     =8'b1100_0011;
+    parameter [7:0] load_mem_i                  =8'b1100_0100;
+    parameter [7:0] Iterate_j                   =8'b1100_0110;
+
+	assign wren=state[4];
+//	assign key_leng= 3'h3;
+
+	always_ff @( posedge clk or negedge reset ) begin : blockName
+		if (!reset) begin
+			state <= start;
+			iterator <= 8'h0;
+			iterator_j <= 8'h0;
 		end
-		
-		// If not resetting, normal operation
+
 		else
-		begin
-			if(state == COMPLETION)
-			begin
-				iterator <= END_OF_MSG;
+		case (state)
+			start: state <= Iterate_i;
+
+			Iterate_i: begin
+				if (iterator == END_OF_MSG)
+					state <= reset_i;
+				else begin
+					state <= Iterate_i;
+					iterator <= iterator + 8'h01;
+				end
 			end
-			else
-			begin
-				iterator <= iterator + 8'h01;
+			
+			reset_i:begin
+				iterator <= 8'h0;
+				state <= load_mem_i;
 			end
+
+			load_mem_i:begin
+				if(iterator == END_OF_MSG)
+					state <= start;
+				else begin
+					state <= Iterate_j;
+				end
+			end
+
+			Iterate_j:begin
+				iterator_j <= iterator_j+ q + secret_key[iterator%3];
+				state <= load_mem_i;
+				iterator <= iterator+8'h01;
+			end
+
+			default: state <= start;
+		endcase
 		
-			state <= next_state;
-		end
 	end
 endmodule
