@@ -1,5 +1,5 @@
 Assembler report for rc4
-Sat Mar 13 17:18:23 2021
+Sun Mar 14 19:21:32 2021
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -11,7 +11,7 @@ Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
   3. Assembler Settings
   4. Assembler Encrypted IP Cores Summary
   5. Assembler Generated Files
-  6. Assembler Device Options: C:/Users/Mark Lee-PC/Documents/GitHub/CPEN311_LAB_4/rtl/output_files/rc4.sof
+  6. Assembler Device Options: E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/output_files/rc4.sof
   7. Assembler Messages
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sat Mar 13 17:18:23 2021 ;
+; Assembler Status      ; Successful - Sun Mar 14 19:21:32 2021 ;
 ; Revision Name         ; rc4                                   ;
 ; Top-level Entity Name ; ksa                                   ;
 ; Family                ; Cyclone V                             ;
@@ -64,24 +64,24 @@ agreement for further details.
 +--------+------------------------+--------------+
 
 
-+------------------------------------------------------------------------------+
-; Assembler Generated Files                                                    ;
-+------------------------------------------------------------------------------+
-; File Name                                                                    ;
-+------------------------------------------------------------------------------+
-; C:/Users/Mark Lee-PC/Documents/GitHub/CPEN311_LAB_4/rtl/output_files/rc4.sof ;
-+------------------------------------------------------------------------------+
++--------------------------------------------------------------------+
+; Assembler Generated Files                                          ;
++--------------------------------------------------------------------+
+; File Name                                                          ;
++--------------------------------------------------------------------+
+; E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/output_files/rc4.sof ;
++--------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/Mark Lee-PC/Documents/GitHub/CPEN311_LAB_4/rtl/output_files/rc4.sof ;
-+----------------+---------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                               ;
-+----------------+---------------------------------------------------------------------------------------+
-; Device         ; 5CSEMA5F31C6                                                                          ;
-; JTAG usercode  ; 0x00B892F2                                                                            ;
-; Checksum       ; 0x00B892F2                                                                            ;
-+----------------+---------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------+
+; Assembler Device Options: E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/output_files/rc4.sof ;
++----------------+-----------------------------------------------------------------------------+
+; Option         ; Setting                                                                     ;
++----------------+-----------------------------------------------------------------------------+
+; Device         ; 5CSEMA5F31C6                                                                ;
+; JTAG usercode  ; 0x00B9F1A1                                                                  ;
+; Checksum       ; 0x00B9F1A1                                                                  ;
++----------------+-----------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -90,13 +90,13 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Sat Mar 13 17:18:13 2021
+    Info: Processing started: Sun Mar 14 19:21:24 2021
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off rc4 -c rc4
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4832 megabytes
-    Info: Processing ended: Sat Mar 13 17:18:23 2021
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:10
+    Info: Peak virtual memory: 4848 megabytes
+    Info: Processing ended: Sun Mar 14 19:21:32 2021
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:08
 
 

@@ -1,0 +1,275 @@
+//=====================================================================================
+//
+// Finite State Machine
+// Sourced From Quartus II Sample FSM
+//
+//		Original Comments:
+//		 SystemVerilog state machine implementation that uses enumerated types.
+//		 Altera recommends using this coding style to describe state machines in SystemVerilog.
+//		 In Quartus II integrated synthesis, the enumerated type
+//		 that defines the states for the state machine must be
+//		 of an unsigned integer type. If you do not specify the
+//		 enumerated type as int unsigned, a signed int type is used by default.
+//		 In this case, the Quartus II integrated synthesis synthesizes the design, but
+//		 does not infer or optimize the logic as a state machine.
+//
+// Changed Active LOW reset to Active HIGH reset
+//=====================================================================================
+
+module task2_fsm (	input clk, reset,
+							input [9:0] secret_key, 
+							input [7:0] q,
+							
+							output logic [7:0] iterator, 
+							//output logic [2:0] secret_key_iter,
+							output logic wren
+						);
+					
+	logic [7:0] iterator_i, iterator_j, iterator_k, saved_value_i, saved_value_j;				
+	parameter END_OF_MSG = 8'hFF;	
+	parameter KEY_LENGTH = 3;
+	
+	// Defining states
+	enum int unsigned { 
+		// Loop 1
+		START = 0, 
+		INITIALIZE_S_ARRAY = 1,
+		COMPLETED_S_ARRAY = 2,
+		
+		// Loop 2
+		ITERATE_LOOP_2 = 3,
+		COPY_I_LOOP_2 = 4,
+		SWAP_I_LOOP_2 = 5,
+		SWAP_J_LOOP_2 = 6,
+		COMPLETED_LOOP_2 = 7,
+		
+		// Loop 3
+		ITERATE_LOOP_3 = 8,
+		COPY_I_LOOP_3 = 9,
+		SWAP_I_LOOP_3 = 10,
+		SWAP_J_LOOP_3 = 11,
+		RETRIEVE_K_LOOP_3 = 12,
+		OUTPUT_K_LOOP_3 =13,
+		COMPLETED_DECRYPTION = 14
+		
+	} state, next_state;		
+	
+	// Defining next_state order
+	always_comb begin : next_state_logic 
+	next_state = START;
+		case(state)
+				// Loop 1
+				START: 
+				begin
+					next_state = INITIALIZE_S_ARRAY;
+				end 
+				
+				INITIALIZE_S_ARRAY: 
+				begin
+					next_state = (iterator_i == END_OF_MSG) ? COMPLETED_S_ARRAY : INITIALIZE_S_ARRAY;
+				end 
+				
+				COMPLETED_S_ARRAY: 
+				begin
+					next_state = ITERATE_LOOP_2;
+				end 
+				
+				// Loop 2
+				ITERATE_LOOP_2: 
+				begin
+					next_state = COPY_I_LOOP_2;
+				end 
+				
+				COPY_I_LOOP_2: 
+				begin
+					next_state = SWAP_I_LOOP_2;
+				end 
+				
+				SWAP_I_LOOP_2: 
+				begin
+					next_state = SWAP_J_LOOP_2;
+				end 
+				
+				SWAP_J_LOOP_2: 
+				begin
+					next_state = (iterator_i == END_OF_MSG) ? COMPLETED_LOOP_2 : ITERATE_LOOP_2;
+				end 
+				
+				COMPLETED_LOOP_2: 
+				begin
+					next_state = COMPLETED_LOOP_2;
+					//next_state = ITERATE_LOOP_3;
+				end 
+				
+				// Loop 3
+				ITERATE_LOOP_3: 
+				begin
+					next_state = COPY_I_LOOP_3;
+				end 
+				
+				COPY_I_LOOP_3: 
+				begin
+					next_state = SWAP_I_LOOP_3;
+				end 
+				
+				SWAP_I_LOOP_3: 
+				begin
+					next_state = SWAP_J_LOOP_3;
+				end 
+				
+				SWAP_J_LOOP_3: 
+				begin
+					next_state = RETRIEVE_K_LOOP_3;
+				end 
+				
+				RETRIEVE_K_LOOP_3: 
+				begin
+					next_state = (iterator_k == END_OF_MSG) ? COMPLETED_DECRYPTION : ITERATE_LOOP_3;
+				end 
+				
+				COMPLETED_DECRYPTION: 
+				begin
+					next_state = COMPLETED_DECRYPTION;
+				end 
+				
+			default: next_state = START;
+		endcase
+	end
+	
+	// Defining output values
+	always_comb 
+	begin 
+			case(state)
+			   // Loop 1
+				START: 
+				begin	
+					wren <= 0;
+				end
+				
+				INITIALIZE_S_ARRAY: 
+				begin	
+					wren <= 1;
+				end
+				
+				COMPLETED_S_ARRAY: 
+				begin	
+					wren <= 0;
+				end
+				
+				// Loop 2
+				ITERATE_LOOP_2:
+				begin	
+					wren <= 0;
+				end
+				
+				COPY_I_LOOP_2:
+				begin
+					wren <= 0;
+				end
+				
+				SWAP_I_LOOP_2:
+				begin
+					wren <= 1;
+				end
+				
+				SWAP_J_LOOP_2:
+				begin
+					wren <= 1;
+				end
+				
+				COMPLETED_LOOP_2:
+			   begin	
+					wren <= 0;
+				end	
+				
+				// Loop 3
+				COPY_I_LOOP_3:
+				begin
+					wren <= 0;
+				end
+				
+				SWAP_I_LOOP_3:
+				begin
+					wren <= 1;
+				end
+				
+				SWAP_J_LOOP_3:
+				begin
+					wren <= 1;
+				end
+				
+				RETRIEVE_K_LOOP_3:
+				begin
+					wren <= 0;
+				end
+				
+				OUTPUT_K_LOOP_3:
+				begin
+					wren <= 1;
+				end
+				
+				COMPLETED_DECRYPTION:
+				begin
+					wren <= 0;
+				end
+				
+				default: // If something goes wrong, default START State value
+				begin
+					wren <= 0;
+				end
+			endcase
+	end
+	
+	// Handle resets and updating state to next_state
+	always_ff@(posedge clk or posedge reset)
+	begin
+		if(reset)
+		begin
+			state <= START;
+			iterator <= 8'h00;
+			iterator_i <= 8'h00;
+			iterator_j <= 8'h00;
+		end
+		
+		// If not resetting, normal operation
+		else
+		begin
+			if(state == COMPLETED_S_ARRAY)
+			begin
+				iterator_i <= 8'h00;
+				iterator <= iterator_i;
+				// maybe add first stage of iterate key
+			end
+			else if(state == INITIALIZE_S_ARRAY) 
+			begin
+				iterator_i <= iterator_i + 8'h01;
+				iterator <= iterator_i;
+			end
+			else if(state == ITERATE_LOOP_2) 
+			begin
+				iterator_j <= iterator_j + q + (secret_key % KEY_LENGTH);
+				iterator_i <= iterator_i + 1;
+				iterator <= iterator_i;
+				
+				// swap values of i and j?
+			end
+			else if(state == COPY_I_LOOP_2)
+			begin
+				saved_value_i <= q;
+				iterator <= iterator_i; // Maybe add wait state after
+			end
+			else if(state == SWAP_I_LOOP_2)
+			begin
+				iterator <= iterator_i; // Maybe add wait state after
+			end
+			else if(state == COMPLETED_DECRYPTION)
+			begin
+				iterator_i <= 8'h00;
+				iterator_j <= 8'h00;
+			end
+
+		
+			state <= next_state;
+		end
+	end
+endmodule
