@@ -29,18 +29,17 @@ module ksa(
 	logic clk, reset_n;										
 
    assign clk = CLOCK_50;
-   assign reset_n = KEY[3];
+   assign reset_n = KEY[3]; // ? 1'b1 : 1'b0 ;
 	parameter logic [7:0] key [2:0]= '{8'h49,8'h02, 8'h00};
 	
 	logic [7:0] out_value;
 	 
-
-	 /*
+	
 	task2_fsm_ebi_ver pass_through_values(
 		// Inputs
 		.clk(clk),
 		.reset(reset_n),
-		//.secret_key(key),
+		.secret_key(key),
 		.q(q),
 		
 		// Outputs
@@ -48,11 +47,10 @@ module ksa(
 		.out_value(out_value),
 		.wren(wren)
 	);
-	*/
 
 
 
-
+/*
 	task2_fsm pass_through_values(
 		// Inputs
 		.clk(clk),
@@ -65,7 +63,7 @@ module ksa(
 		.out_value(out_value),
 		.wren(wren)
 	);
-	
+*/
 	
 	 
 	s_memory output_to_S(

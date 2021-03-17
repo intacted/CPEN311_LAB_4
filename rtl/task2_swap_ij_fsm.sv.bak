@@ -17,7 +17,7 @@
 //=====================================================================================
 
 module task2_swap_ij_fsm 
-						(	input clk, reset,
+						(	input clk, reset, fsm_start,
 							input [7:0] q, iterator_i, iterator_j,
 							
 							output logic [7:0] iterator, out_value,
@@ -35,7 +35,13 @@ module task2_swap_ij_fsm
 		COPY_J = 2,
 		SWAP_I= 3,
 		SWAP_J = 4,
-		FINISH = 5
+		FINISH = 5,
+
+		WAIT_START = 6,
+		WAIT_COPY_I = 7,
+		WAIT_COPY_J = 8,
+		WAIT_SWAP_I = 9,
+		WAIT_SWAP_J = 10			
 	} state, next_state;		
 	
 	// Defining next_state order
@@ -44,29 +50,49 @@ module task2_swap_ij_fsm
 		case(state)
 				START: 
 				begin
-					next_state = COPY_I;
+					next_state = fsm_start ? WAIT_START : START;
 				end 
+				WAIT_START:
+				begin
+					next_state = COPY_I;
+				end
 				
 				COPY_I: 
 				begin
-					next_state = COPY_J;
+					next_state = WAIT_COPY_I;
 				end 
+				WAIT_COPY_I:
+				begin
+					next_state = COPY_J;
+				end
 				
 				COPY_J: 
 				begin
-					next_state = SWAP_I;
+					next_state = WAIT_COPY_J;
 				end 
+				WAIT_COPY_J:
+				begin
+					next_state = SWAP_I;
+				end
 				
 				SWAP_I: 
 				begin
-					next_state = SWAP_J;
+					next_state = WAIT_SWAP_I;
 				end 
+				WAIT_SWAP_I:
+				begin
+					next_state = SWAP_J;
+				end
 				
 				SWAP_J: 
 				begin
+					next_state = WAIT_SWAP_J;
+				end 
+				WAIT_SWAP_J: 
+				begin
 					next_state = FINISH;
 				end 
-				
+		
 				FINISH: 
 				begin
 					next_state = FINISH;
@@ -76,61 +102,7 @@ module task2_swap_ij_fsm
 		endcase
 	end
 	
-	// Defining output values
-	always_comb 
-	begin 
-			case(state)
-				START: 
-				begin	
-					iterator <= iterator_i;
-					wren <= 0;
-					fsm_finished <= 0;
-				end
-						
-				COPY_I:
-				begin
-				   iterator <= iterator_i;
-					wren <= 0;
-					fsm_finished <= 0;
-				end
-				
-				COPY_J:
-				begin
-				   iterator <= iterator_j;
-					wren <= 0;
-					fsm_finished <= 0;
-				end
-				
-				SWAP_I:
-				begin
-				   iterator <= iterator_i;
-					wren <= 1;
-					fsm_finished <= 0;
-				end
-				
-				SWAP_J:
-				begin
-					iterator <= iterator_j;
-					wren <= 1;
-					fsm_finished <= 0;
-				end
-				
-				FINISH:
-			   begin	
-				   iterator <= 8'h00;
-					wren <= 0;
-					fsm_finished <= 1;
-				end		
-				
-				default: // If something goes wrong, default FINISH State value
-				begin
-					iterator <= 8'h00;
-					wren <= 0;
-					fsm_finished <= 1;
-				end
-			endcase
-	end
-	
+
 	// Handle resets and updating state to next_state
 	always_ff@(posedge clk or posedge reset)
 	begin
@@ -138,31 +110,91 @@ module task2_swap_ij_fsm
 		begin
 			state <= START;
 
+			// May be redundant
 			saved_value_i <= 8'h00;
 			saved_value_j <= 8'h00;
 			out_value <= 8'h00;
+
+			fsm_finished <= 0;
+			wren <= 0;
 		end
 		
 		// If not resetting, normal operation
 		else
 		begin
-			if(state == COPY_I)
-			begin
-				saved_value_i <= q;
-			end
-			else if(state == COPY_J)
-			begin
-				saved_value_j <= q;
-			end
-			else if(state == SWAP_I)
-			begin
-				out_value <= saved_value_i;
-			end
-			else if(state == SWAP_J)
-			begin
-				out_value <= saved_value_j;
-			end
+			case(state)
+				START:
+				begin
+					saved_value_i <= 8'h00;
+					saved_value_j <= 8'h00;
+					out_value <= 8'h00;
 
+					fsm_finished <= 0;
+					wren <= 0;
+				end
+				WAIT_START
+				begin
+					wren <= 0;
+				end
+				
+				COPY_I:
+				begin
+					saved_value_i <= q;
+					iterator <= iterator_i;
+					wren <= 0;
+				end
+				WAIT_COPY_I:
+				begin
+					saved_value_i <= q;			// may be redundant
+				end
+
+				COPY_J:
+				begin
+					saved_value_j <= q;
+					iterator <= iterator_j;
+					wren <= 0;
+				end
+				WAIT_COPY_J:
+				begin
+					saved_value_j <= q;			// may be redundant
+				end
+
+				SWAP_I:
+				begin
+					out_value <= saved_value_j;
+					iterator <= iterator_i;
+					wren <= 1;
+				end
+				WAIT_SWAP_I:
+				begin
+					//out_value <= saved_value_j;			// may be redundant
+					wren <= 0;
+				end
+
+				SWAP_J:
+				begin
+					out_value <= saved_value_i;
+					iterator <= iterator_j;
+					wren <= 1;
+				end
+				WAIT_SWAP_J:
+				begin
+					//out_value <= saved_value_i;			// may be redundant
+					wren <= 0;
+				end
+
+				FINISH:
+				begin
+					fsm_finished <= 1;
+					wren <= 0;
+				end
+				
+				default: // In case something goes wrong
+				begin
+					fsm_finished <= 1;
+					wren <= 0;
+				end
+			endcase
 
 		
 			state <= next_state;

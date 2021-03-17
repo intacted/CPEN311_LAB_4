@@ -46,10 +46,6 @@ parameter END_OF_MSG = 8'hFF;
 	 
 	 parameter [7:0] Swap_ij                     =8'b1100_0000;
 
-	assign wren= state[4] || request_to_write_loop_2;
-	assign mods= secret_key[iterator%3]; // secret_key[i mod keylength]
-//	assign key_leng= 3'h3;
-
 	logic request_to_write_loop_2;
 	logic requested_iterator_loop_2;
 	logic requested_out_value_loop_2;
@@ -57,6 +53,12 @@ parameter END_OF_MSG = 8'hFF;
 	logic start_loop_2;
 	logic finished_loop_2;
 	logic reset_loop_2;
+
+	assign wren= state[4] || request_to_write_loop_2;
+	assign mods= secret_key[iterator%3]; // secret_key[i mod keylength]
+//	assign key_leng= 3'h3;
+
+
 	
 task2_swap_ij_fsm loop_2_swap
 						(	// Inputs
@@ -117,6 +119,8 @@ task2_swap_ij_fsm loop_2_swap
 				else begin
 					state <= Iterate_j;
 				end
+				
+				start_loop_2 <= 1'b0;
 			end
 
 			Iterate_j:begin

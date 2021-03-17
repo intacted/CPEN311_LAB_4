@@ -18,21 +18,23 @@
 
 module task2_fsm_ebi_ver 
 						(	input clk, reset,
-							//input [7:0] secret_key [2:0],
+							input [7:0] secret_key [2:0],
 							input [7:0] q,
 							
 							output logic [7:0] iterator, out_value,
 							output logic wren
 						);
 						
-	parameter logic [7:0] secret_key [2:0]= '{8'h49,8'h02, 8'h00}; 	//temp	
+	//parameter logic [7:0] secret_key [2:0]= '{8'h49,8'h02, 8'h00}; 	//temp	
 			
-	logic [7:0] iterator_i, iterator_j, iterator_k, saved_value_i, saved_value_j;				
+	logic [7:0] iterator_i, iterator_j, iterator_k, saved_value_i, saved_value_j;		
+	logic [1:0] wait_count;	
+	
 	parameter END_OF_MSG = 8'hFF;	
 	parameter KEY_LENGTH = 3;
 	
 	wire [7:0] mods;
-	assign mods= secret_key[iterator%KEY_LENGTH]; // secret_key[i mod keylength]
+	assign mods = secret_key[iterator%KEY_LENGTH]; // secret_key[i mod keylength]
 
 	
 	// LOOP 2 WIRES and REGS:
@@ -71,6 +73,7 @@ task2_swap_ij_fsm loop_2_swap
 		
 		// Loop 2
 		ITERATE_LOOP_2 = 3,
+		WAIT_ITERATE_LOOP_2 = 15,
 		SWAP_IJ_LOOP_2 = 4,
 		COMPLETED_LOOP_2 = 7,
 		
@@ -106,12 +109,17 @@ task2_swap_ij_fsm loop_2_swap
 				// Loop 2
 				ITERATE_LOOP_2: 
 				begin
-					next_state = (iterator_i == END_OF_MSG) ? COMPLETED_LOOP_2 : SWAP_IJ_LOOP_2;
+					next_state = (iterator_i == END_OF_MSG) ? COMPLETED_LOOP_2 : WAIT_ITERATE_LOOP_2;// SWAP_IJ_LOOP_2;
 				end 
+				
+				WAIT_ITERATE_LOOP_2:
+				begin
+					next_state = (wait_count == 3) ? SWAP_IJ_LOOP_2 : WAIT_ITERATE_LOOP_2;
+				end
 				
 				SWAP_IJ_LOOP_2:
 				begin
-					next_state = finished_loop_2 ? COMPLETED_LOOP_2 : ITERATE_LOOP_2;
+					next_state = finished_loop_2 ? ITERATE_LOOP_2 : SWAP_IJ_LOOP_2;	// Change state once complete, otherwise stay
 				end
 				
 				COMPLETED_LOOP_2: 
@@ -167,6 +175,11 @@ task2_swap_ij_fsm loop_2_swap
 				
 				// Loop 2
 				ITERATE_LOOP_2:
+				begin	
+					wren <= 0;
+				end	
+				
+				WAIT_ITERATE_LOOP_2:
 				begin	
 					wren <= 0;
 				end	
@@ -238,13 +251,17 @@ task2_swap_ij_fsm loop_2_swap
 					iterator_j <= 8'h00;
 					
 					out_value <= 8'h00;
+					
+					// Make sure the swap-ij is on stand-by
+					reset_loop_2 <= 1'b1;
+					start_loop_2 <= 1'b0;
 				end
 
 				INITIALIZE_S_ARRAY: 
 				begin
 					iterator_i <= iterator_i + 8'h01;
 					iterator <= iterator_i;
-					out_value <= iterator;
+					out_value <= iterator_i;
 				end
 				
 				COMPLETED_S_ARRAY:
@@ -260,9 +277,19 @@ task2_swap_ij_fsm loop_2_swap
 					iterator_i <= iterator_i + 1;
 					iterator <= iterator_i;
 					
+					//reset_loop_2 <= 1'b1;
+					//start_loop_2 <= 1'b0;
+				end
+				
+				WAIT_ITERATE_LOOP_2:
+				begin
+					iterator_j <= iterator_j + q + mods;	//(secret_key % KEY_LENGTH);
+					iterator <= iterator_i;
+					
 					reset_loop_2 <= 1'b1;
 					start_loop_2 <= 1'b0;
 				end
+				
 				SWAP_IJ_LOOP_2:
 				begin
 					iterator <= requested_iterator_loop_2;
