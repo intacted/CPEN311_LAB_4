@@ -18,17 +18,17 @@
 
 module task2_fsm (	input clk, reset,
 							input [7:0] secret_key [2:0],
-							input [7:0] q,
-							
-							output logic [7:0] iterator, out_value,
-							output logic wren
+							input logic [7:0] q,
+							output logic [7:0] iterator, 
+							output logic wren,
+							output logic [7:0] out_value
 						);
 					
-reg [7:0] iterator_i, iterator_j;
-wire [7:0] mods;
+logic [7:0] iterator_j,value_i, value_j,temp;
+logic [7:0] mods;
 parameter END_OF_MSG = 8'hFF;
-
-
+//logic [7:0] out_value;
+logic finish_loop;
 
 //Working_mem RAM1(.wen(wen), .q(q), .data(data), .address(addr));
 
@@ -36,115 +36,150 @@ parameter END_OF_MSG = 8'hFF;
 
 //encrypted_msg ROM (.q(q_m), .address (addr_m));
 
-    reg [7:0]   state;
-                                                  //7654_3210
-    parameter [7:0] start                       =8'b0000_0001;
-    parameter [7:0] Iterate_i                   =8'b0001_0010;
-    parameter [7:0] reset_i                     =8'b1100_0011;
-    parameter [7:0] load_mem_i                  =8'b1100_0100;
-    parameter [7:0] Iterate_j                   =8'b1100_0110;
-	 
-	 parameter [7:0] Swap_ij                     =8'b1100_0000;
+    reg [8:0]   state;
+                                                  //8765_43210
+    parameter [8:0] start                       =9'b0000_00001;
+	parameter [8:0] loop_1              	    =9'b0001_00010;
+    parameter [8:0] Iterate_i                   =9'b0001_00011;
+	parameter [8:0] intilize_mem				=9'b0000_00100;
+    parameter [8:0] reset_i                     =9'b0000_00101;
+	//start loop 2 here
+	// swap starts here 
+	parameter [8:0] load_s						=9'b0000_00110;
+    parameter [8:0] load_mem_i                  =9'b0000_00111;
+	parameter [8:0] wait_grab_j				    =9'b0000_01000;
+	parameter [8:0] wait_2_grab_j				=9'b0000_01001;
+	parameter [8:0] grab_j						=9'b0000_01010;
+	parameter [8:0] wait_place_j				=9'b0000_01011;
+	parameter [8:0] place_j						=9'b0001_01100;
+	parameter [8:0] replace_i					=9'b0000_01101;
+	parameter [8:0] wait_place_i				=9'b0000_01110;
+	parameter [8:0] place_i						=9'b0001_01111;
+	parameter [8:0] load_j_i   					=9'b0000_10000;
+	parameter [8:0] finished					=9'b0000_11111;
 
-	logic request_to_write_loop_2;
-	logic requested_iterator_loop_2;
-	logic requested_out_value_loop_2;
-	
-	logic start_loop_2;
-	logic finished_loop_2;
-	logic reset_loop_2;
-
-	assign wren= state[4] || request_to_write_loop_2;
-	assign mods= secret_key[iterator%3]; // secret_key[i mod keylength]
-//	assign key_leng= 3'h3;
 
 
-	
-task2_swap_ij_fsm loop_2_swap
-						(	// Inputs
-							.clk(clk),
-					   	.reset(reset_loop_2),
-							.fsm_start(start_loop_2),
-							.q(q), 
-							.iterator_i(iterator_i), 
-							.iterator_j(iterator_j),
-							
-							// Outputs
-							.iterator(requested_iterator_loop_2), 
-							.out_value(requested_out_value_loop_2),       
-							.saved_value_i(), 								// optional output for use in loop 3
-							.saved_value_j(), 								// optional output for use in loop 3
-							.wren(request_to_write_loop_2), 
-							.fsm_finished(finished_loop_2)
-						);
+	assign wren=state[5];
+	//assign read_write=state[6];
 
-	always_ff @( posedge clk or negedge reset ) begin : blockName
-		if (!reset) begin //resets FSM
+	//assign q= read_write?out_value:8'bz;
+//	assign mods= secret_key[iterator%3]; // secret_key[i mod keylength]
+//	assign key_leng= 3'h4;
+
+	always_ff @( posedge clk or posedge  reset ) begin : loop2
+		if (reset) begin //resets FSM
+			finish_loop <= 1'b0;
+			iterator <= 8'h00;
+			iterator_j <= 8'h00;
 			state <= start;
-			
-			iterator <= 8'h0;
-			iterator_i <= 8'h0;
-			iterator_j <= 8'h0;
-			
-			start_loop_2 <= 1'b0;
-			reset_loop_2 <= 1'b0;
 		end
 
 		else
 		case (state)
-			start:
-				begin
-					state <= Iterate_i; //starts FSM
-					iterator <= 8'h0;
-					iterator_j <= 8'h0;
-				end
+			start:begin
+				finish_loop <= 1'b0;
+				iterator <= 8'h00;
+				iterator_j <= 8'h00;
+				state <= loop_1; //starts FSM
+			end
+
+			loop_1:begin
+				out_value <= iterator;
+				state <= intilize_mem;
+			end
 
 			Iterate_i: begin //
-				if (iterator_i == END_OF_MSG)
+				if (iterator == END_OF_MSG)
 					state <= reset_i;
 				else begin
-					state <= Iterate_i;
-					iterator_i <= iterator_i + 8'h01;
-					iterator <= iterator_i;
-					
-					out_value <= iterator_i;
+					out_value <= iterator;
+					iterator <= iterator + 8'h01;
+					state <= intilize_mem;
 				end
 			end
+
+			intilize_mem:begin
+				out_value <= iterator;
+				state <= Iterate_i;
+			end
+
 			
 			reset_i:begin
-				iterator <= 8'h0;
-				iterator_i <= 8'h0;
-				// reset iterator_j as well ???
+				iterator <= 8'h00;
+				state <= load_s;
+			end
+
+			load_s:begin
 				state <= load_mem_i;
 			end
 
 			load_mem_i:begin
-				if(iterator_i == END_OF_MSG)
-					state <= start;
-				else begin
-					state <= Iterate_j;
+				if(iterator == END_OF_MSG)
+					finish_loop <= 1'b1;
+				begin
+					iterator_j <= iterator_j+ q + secret_key[iterator%3];
+					mods <= secret_key[iterator%3]; //for debugging
+					value_i <= q;
+					temp <= iterator;
+					state <= wait_grab_j;
 				end
-				
-				start_loop_2 <= 1'b0;
 			end
 
-			Iterate_j:begin
-				iterator_j <= iterator_j+ q + mods;
-				state <= Swap_ij;
-				iterator_i <= iterator_i+8'h01;
-				iterator <= iterator_i;
-				
-				reset_loop_2 <= 1'b1;
-				start_loop_2 <= 1'b0;
+//			Iterate_j:begin				
+//				iterator_j <= iterator_j+ q + mods;
+//				state <= grab_i;
+				//iterator <= iterator+8'h01;
+//			end
+
+			wait_grab_j:begin
+				iterator <= iterator_j;
+				state <= wait_2_grab_j;
+			end
+
+			wait_2_grab_j:begin
+				out_value <= value_i;
+				state <= grab_j;
+			end
+
+			grab_j:begin
+				value_j <= q;
+				state <= wait_place_j;
+			end
+
+			wait_place_j:begin
+				state <= place_j;
+			end
+
+			place_j:begin
+				state <= replace_i;
+			end
+
+			replace_i:begin
+				iterator <= temp;
+				state <= wait_place_i;
+			end
+
+			wait_place_i:begin
+				out_value <= value_j;
+				state <= place_i;
+			end
+
+			place_i:begin
+				state <= load_j_i;
 			end
 			
-			Swap_ij: begin
-				iterator <= requested_iterator_loop_2;
-				out_value <= requested_out_value_loop_2;
-				
-				reset_loop_2 <= 1'b0;
-				start_loop_2 <= 1'b1;
-				state <= (finished_loop_2) ?  Swap_ij : load_mem_i;
+			load_j_i:begin
+				if (finish_loop==1'b1)
+					state <= finished;
+				else begin
+					iterator <= iterator+8'h01;
+					state <= load_s;
+				end
+			end
+
+			finished:begin
+				state <= finished;
 			end
 
 			default: state <= start;

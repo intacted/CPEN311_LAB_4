@@ -1,0 +1,20 @@
+//=====================================================================================
+//
+// Multiplexer Section (4-1)
+//
+//=====================================================================================
+module mux4
+		#(parameter N = 32) 
+			(input logic [N-1:0] a0, a1, a2, a3,
+						input logic [2:0] select,
+						output logic [N-1:0] out);
+						
+						always @(*)
+						case(select)
+							0: out = a0;
+							1: out = a1;
+							2: out = a2;
+							3: out = a3;
+							default: out = 0;
+						endcase
+endmodule

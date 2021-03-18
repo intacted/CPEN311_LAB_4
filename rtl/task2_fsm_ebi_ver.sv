@@ -24,9 +24,7 @@ module task2_fsm_ebi_ver
 							output logic [7:0] iterator, out_value,
 							output logic wren
 						);
-						
-	//parameter logic [7:0] secret_key [2:0]= '{8'h49,8'h02, 8'h00}; 	//temp	
-			
+									
 	logic [7:0] iterator_i, iterator_j, iterator_k, saved_value_i, saved_value_j;		
 	logic [1:0] wait_count;	
 	parameter WAIT_STATE_AMOUNT = 2;
@@ -36,10 +34,30 @@ module task2_fsm_ebi_ver
 	wire [7:0] mods;
 	assign mods = secret_key[iterator%KEY_LENGTH]; // secret_key[i mod keylength]
 
+	// LOOP 1 WIRES & REGS:
+	logic final_increment;
 	
-	// LOOP 2 WIRES and REGS:
-	logic request_to_write_loop_2;
+	// Iterator selection
+	
+	logic [7:0] requested_iterator_main_loop;
+	logic request_iterator_main_loop_flag;
+	
 	logic [7:0] requested_iterator_loop_2;
+	logic request_iterator_loop_2_flag; 
+	
+	mux_one_hot_select #(/*BIT_WIDTH*/ 8, /*INPUT_NUMBER*/ 2) iterator_selector
+	(	// Inputs
+		.select({request_iterator_loop_2_flag, request_iterator_main_loop_flag}),
+		.a('{requested_iterator_loop_2,requested_iterator_main_loop}),
+		
+		// Outputs 
+		.out(iterator)
+	
+	);
+	
+	
+	// LOOP 2 WIRES & REGS:
+	logic request_to_write_loop_2;
 	logic [7:0] requested_out_value_loop_2;
 	
 	logic start_loop_2;
@@ -60,7 +78,7 @@ task2_swap_ij_fsm loop_2_swap
 							.out_value(requested_out_value_loop_2),       
 							.saved_value_i(), 								// optional output for use in loop 3
 							.saved_value_j(), 								// optional output for use in loop 3
-							.wren(request_to_write_loop_2), 
+							.wren(request_to_write_loop_2),
 							.fsm_finished(finished_loop_2)
 						);
 	
@@ -98,12 +116,14 @@ task2_swap_ij_fsm loop_2_swap
 				
 				INITIALIZE_S_ARRAY: 
 				begin
-					next_state = (iterator_i == END_OF_MSG) ? COMPLETED_S_ARRAY : INITIALIZE_S_ARRAY;
+					next_state = (iterator_i == END_OF_MSG && final_increment == 1) ? COMPLETED_S_ARRAY : INITIALIZE_S_ARRAY;
 				end 
 				
 				COMPLETED_S_ARRAY: 
 				begin
-					next_state = ITERATE_LOOP_2;
+					//next_state = COMPLETED_S_ARRAY; 
+					//next_state = ITERATE_LOOP_2;
+					next_state = (wait_count === WAIT_STATE_AMOUNT) ? WAIT_ITERATE_LOOP_2 : COMPLETED_S_ARRAY;
 				end 
 				
 				// Loop 2
@@ -233,11 +253,17 @@ task2_swap_ij_fsm loop_2_swap
 		if(reset)
 		begin
 			state <= START;
-			iterator <= 8'h00;
+			//iterator <= 8'h00;
+			requested_iterator_main_loop <= 8'h00;
 			iterator_i <= 8'h00;
 			iterator_j <= 8'h00;
 			
+			request_iterator_main_loop_flag <= 1'b0;
+			request_iterator_loop_2_flag <= 1'b0; 
+			
 			out_value <= 8'h00;
+			
+			final_increment <= 1'b0;
 		end
 		
 		// If not resetting, normal operation
@@ -246,14 +272,22 @@ task2_swap_ij_fsm loop_2_swap
 			case(state)
 				START:
 				begin
-					iterator <= 8'h00;
+					//iterator <= 8'h00;
+					requested_iterator_main_loop <= 8'h00;
 					iterator_i <= 8'h00;
 					iterator_j <= 8'h00;
+					
+					request_iterator_main_loop_flag <= 1'b0;
+					request_iterator_loop_2_flag <= 1'b0; 
+					
 					
 					out_value <= 8'h00;
 					
 					//
 					wait_count <= 2'b0;
+					
+					//
+					final_increment <= 1'b0;
 					
 					// Make sure the swap-ij is on stand-by
 					reset_loop_2 <= 1'b1;
@@ -263,21 +297,30 @@ task2_swap_ij_fsm loop_2_swap
 				INITIALIZE_S_ARRAY: 
 				begin
 					iterator_i <= iterator_i + 8'h01;
-					iterator <= iterator_i;
+					requested_iterator_main_loop <= iterator_i;
+					request_iterator_main_loop_flag <= 1'b1;
 					out_value <= iterator_i;
+					
+					wait_count <= 2'b0;				// only needed for final step
+					if(iterator === END_OF_MSG)
+						final_increment <= 1'b1;	// there may be a more efficient solution
 				end
 				
 				COMPLETED_S_ARRAY:
 				begin
 					iterator_i <= 8'h00;
-					iterator <= iterator_i;
+					requested_iterator_main_loop <= iterator_i;
+					request_iterator_main_loop_flag <= 1'b1;
+					
 					// maybe add first stage of iterate key
+					wait_count <= wait_count + 1;
 				end
 				
 				ITERATE_LOOP_2:
 				begin
 					iterator_i <= iterator_i + 1;
-					iterator <= iterator_i;
+					requested_iterator_main_loop <= iterator_i;
+					request_iterator_main_loop_flag <= 1'b1;
 					
 					//reset_loop_2 <= 1'b1;
 					//start_loop_2 <= 1'b0;
@@ -288,7 +331,10 @@ task2_swap_ij_fsm loop_2_swap
 				WAIT_ITERATE_LOOP_2:
 				begin
 					iterator_j <= iterator_j + q + mods;	//(secret_key % KEY_LENGTH);
-					iterator <= iterator_i;
+					requested_iterator_main_loop <= iterator_i;
+					
+					request_iterator_main_loop_flag <= 1'b0;
+					request_iterator_loop_2_flag <= 1'b1; 
 					
 					reset_loop_2 <= 1'b1;
 					start_loop_2 <= 1'b0;
@@ -298,7 +344,9 @@ task2_swap_ij_fsm loop_2_swap
 				
 				SWAP_IJ_LOOP_2:
 				begin
-					iterator <= requested_iterator_loop_2;				// MUX use assign
+					//iterator <= requested_iterator_loop_2;				// MUX use assign
+					request_iterator_loop_2_flag <= 1'b1; 
+					
 					out_value <= requested_out_value_loop_2;
 					
 					reset_loop_2 <= 1'b0;

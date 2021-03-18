@@ -1,5 +1,5 @@
 Analysis & Synthesis report for rc4
-Wed Mar 17 20:30:03 2021
+Thu Mar 18 12:33:13 2021
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -22,19 +22,17 @@ Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
  14. Multiplexer Restructuring Statistics (Restructuring Performed)
  15. Source assignments for s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|altsyncram_dsp2:altsyncram1
  16. Parameter Settings for User Entity Instance: Top-level Entity: |ksa
- 17. Parameter Settings for User Entity Instance: task2_fsm_ebi_ver:pass_through_values
- 18. Parameter Settings for User Entity Instance: task2_fsm_ebi_ver:pass_through_values|task2_swap_ij_fsm:loop_2_swap
- 19. Parameter Settings for User Entity Instance: s_memory:output_to_S|altsyncram:altsyncram_component
- 20. Parameter Settings for Inferred Entity Instance: task2_fsm_ebi_ver:pass_through_values|lpm_divide:Mod0
- 21. altsyncram Parameter Settings by Entity Instance
- 22. Port Connectivity Checks: "task2_fsm_ebi_ver:pass_through_values|task2_swap_ij_fsm:loop_2_swap"
- 23. Port Connectivity Checks: "task2_fsm_ebi_ver:pass_through_values"
- 24. In-System Memory Content Editor Settings
- 25. Post-Synthesis Netlist Statistics for Top Partition
- 26. Post-Synthesis Netlist Statistics for Partition sld_hub:auto_hub
- 27. Elapsed Time Per Partition
- 28. Analysis & Synthesis Messages
- 29. Analysis & Synthesis Suppressed Messages
+ 17. Parameter Settings for User Entity Instance: task2_fsm:pass_through_values
+ 18. Parameter Settings for User Entity Instance: s_memory:output_to_S|altsyncram:altsyncram_component
+ 19. Parameter Settings for Inferred Entity Instance: task2_fsm:pass_through_values|lpm_divide:Mod0
+ 20. altsyncram Parameter Settings by Entity Instance
+ 21. Port Connectivity Checks: "task2_fsm:pass_through_values"
+ 22. In-System Memory Content Editor Settings
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Post-Synthesis Netlist Statistics for Partition sld_hub:auto_hub
+ 25. Elapsed Time Per Partition
+ 26. Analysis & Synthesis Messages
+ 27. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -61,13 +59,13 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Mar 17 20:30:03 2021      ;
+; Analysis & Synthesis Status     ; Successful - Thu Mar 18 12:33:13 2021      ;
 ; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                   ; rc4                                        ;
 ; Top-level Entity Name           ; ksa                                        ;
 ; Family                          ; Cyclone V                                  ;
 ; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 199                                        ;
+; Total registers                 ; 174                                        ;
 ; Total pins                      ; 67                                         ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 2,048                                      ;
@@ -204,8 +202,7 @@ agreement for further details.
 +--------------------------------------------------------+-----------------+----------------------------------------------+------------------------------------------------------------------------------------------------------+-------------+
 ; ksa.sv                                                 ; yes             ; User SystemVerilog HDL File                  ; E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/ksa.sv                                                 ;             ;
 ; s_memory.v                                             ; yes             ; User Wizard-Generated File                   ; E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/s_memory.v                                             ;             ;
-; task2_swap_ij_fsm.sv                                   ; yes             ; User SystemVerilog HDL File                  ; E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_swap_ij_fsm.sv                                   ;             ;
-; task2_fsm_ebi_ver.sv                                   ; yes             ; User SystemVerilog HDL File                  ; E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_ebi_ver.sv                                   ;             ;
+; task2_fsm.sv                                           ; yes             ; User SystemVerilog HDL File                  ; E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm.sv                                           ;             ;
 ; sevensegmentdisplaydecoder.v                           ; yes             ; Auto-Found Verilog HDL File                  ; E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/sevensegmentdisplaydecoder.v                           ;             ;
 ; altsyncram.tdf                                         ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/altsyncram.tdf                                        ;             ;
 ; stratix_ram_block.inc                                  ; yes             ; Megafunction                                 ; c:/altera/14.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                 ;             ;
@@ -242,16 +239,16 @@ agreement for further details.
 +---------------------------------------------+--------------------------+
 ; Resource                                    ; Usage                    ;
 +---------------------------------------------+--------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 176                      ;
+; Estimate of Logic utilization (ALMs needed) ; 153                      ;
 ;                                             ;                          ;
-; Combinational ALUT usage for logic          ; 278                      ;
+; Combinational ALUT usage for logic          ; 257                      ;
 ;     -- 7 input functions                    ; 1                        ;
-;     -- 6 input functions                    ; 30                       ;
-;     -- 5 input functions                    ; 43                       ;
-;     -- 4 input functions                    ; 80                       ;
-;     -- <=3 input functions                  ; 124                      ;
+;     -- 6 input functions                    ; 34                       ;
+;     -- 5 input functions                    ; 47                       ;
+;     -- 4 input functions                    ; 37                       ;
+;     -- <=3 input functions                  ; 138                      ;
 ;                                             ;                          ;
-; Dedicated logic registers                   ; 199                      ;
+; Dedicated logic registers                   ; 174                      ;
 ;                                             ;                          ;
 ; I/O pins                                    ; 67                       ;
 ; Total MLAB memory bits                      ; 0                        ;
@@ -261,8 +258,8 @@ agreement for further details.
 ;                                             ;                          ;
 ; Maximum fan-out node                        ; altera_internal_jtag~TDO ;
 ; Maximum fan-out                             ; 153                      ;
-; Total fan-out                               ; 2049                     ;
-; Average fan-out                             ; 3.26                     ;
+; Total fan-out                               ; 1790                     ;
+; Average fan-out                             ; 3.08                     ;
 +---------------------------------------------+--------------------------+
 
 
@@ -271,7 +268,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                          ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                      ; Library Name ;
 +-----------------------------------------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |ksa                                                                                                ; 278 (1)           ; 199 (0)      ; 2048              ; 0          ; 67   ; 0            ; |ksa                                                                                                                                                                                                                     ; work         ;
+; |ksa                                                                                                ; 257 (1)           ; 174 (0)      ; 2048              ; 0          ; 67   ; 0            ; |ksa                                                                                                                                                                                                                     ; work         ;
 ;    |s_memory:output_to_S|                                                                           ; 40 (0)            ; 34 (0)       ; 2048              ; 0          ; 0    ; 0            ; |ksa|s_memory:output_to_S                                                                                                                                                                                                ; work         ;
 ;       |altsyncram:altsyncram_component|                                                             ; 40 (0)            ; 34 (0)       ; 2048              ; 0          ; 0    ; 0            ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component                                                                                                                                                                ; work         ;
 ;          |altsyncram_2d32:auto_generated|                                                           ; 40 (0)            ; 34 (0)       ; 2048              ; 0          ; 0    ; 0            ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated                                                                                                                                 ; work         ;
@@ -284,12 +281,11 @@ agreement for further details.
 ;             |sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|                                          ; 105 (72)          ; 80 (52)      ; 0                 ; 0          ; 0    ; 0            ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub                           ; work         ;
 ;                |sld_rom_sr:hub_info_reg|                                                            ; 14 (14)           ; 9 (9)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg   ; work         ;
 ;                |sld_shadow_jsm:shadow_jsm|                                                          ; 19 (19)           ; 19 (19)      ; 0                 ; 0          ; 0    ; 0            ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_shadow_jsm:shadow_jsm ; work         ;
-;    |task2_fsm_ebi_ver:pass_through_values|                                                          ; 130 (54)          ; 80 (40)      ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm_ebi_ver:pass_through_values                                                                                                                                                                               ; work         ;
-;       |lpm_divide:Mod0|                                                                             ; 40 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm_ebi_ver:pass_through_values|lpm_divide:Mod0                                                                                                                                                               ; work         ;
-;          |lpm_divide_62m:auto_generated|                                                            ; 40 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm_ebi_ver:pass_through_values|lpm_divide:Mod0|lpm_divide_62m:auto_generated                                                                                                                                 ; work         ;
-;             |sign_div_unsign_9kh:divider|                                                           ; 40 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm_ebi_ver:pass_through_values|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider                                                                                                     ; work         ;
-;                |alt_u_div_ose:divider|                                                              ; 40 (40)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm_ebi_ver:pass_through_values|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_ose:divider                                                                               ; work         ;
-;       |task2_swap_ij_fsm:loop_2_swap|                                                               ; 36 (36)           ; 40 (40)      ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm_ebi_ver:pass_through_values|task2_swap_ij_fsm:loop_2_swap                                                                                                                                                 ; work         ;
+;    |task2_fsm:pass_through_values|                                                                  ; 109 (69)          ; 55 (55)      ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm:pass_through_values                                                                                                                                                                                       ; work         ;
+;       |lpm_divide:Mod0|                                                                             ; 40 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm:pass_through_values|lpm_divide:Mod0                                                                                                                                                                       ; work         ;
+;          |lpm_divide_62m:auto_generated|                                                            ; 40 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm:pass_through_values|lpm_divide:Mod0|lpm_divide_62m:auto_generated                                                                                                                                         ; work         ;
+;             |sign_div_unsign_9kh:divider|                                                           ; 40 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm:pass_through_values|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider                                                                                                             ; work         ;
+;                |alt_u_div_ose:divider|                                                              ; 40 (40)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|task2_fsm:pass_through_values|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_ose:divider                                                                                       ; work         ;
 +-----------------------------------------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -321,10 +317,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
 ; Register name                                                                                                                                ; Reason for Removal                     ;
 +----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
-; task2_fsm_ebi_ver:pass_through_values|state[4..31]                                                                                           ; Stuck at GND due to stuck port data_in ;
-; task2_fsm_ebi_ver:pass_through_values|task2_swap_ij_fsm:loop_2_swap|state[4..31]                                                             ; Stuck at GND due to stuck port data_in ;
+; task2_fsm:pass_through_values|state[6..8]                                                                                                    ; Stuck at GND due to stuck port data_in ;
 ; s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3] ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 57                                                                                                       ;                                        ;
+; Total Number of Removed Registers = 4                                                                                                        ;                                        ;
 +----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
 
 
@@ -333,12 +328,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 199   ;
-; Number of registers using Synchronous Clear  ; 47    ;
-; Number of registers using Synchronous Load   ; 49    ;
-; Number of registers using Asynchronous Clear ; 126   ;
+; Total registers                              ; 174   ;
+; Number of registers using Synchronous Clear  ; 24    ;
+; Number of registers using Synchronous Load   ; 25    ;
+; Number of registers using Asynchronous Clear ; 73    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 131   ;
+; Number of registers using Clock Enable       ; 135   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -348,10 +343,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 ; Inverted Register                                                                                                                                                                                        ; Fan out ;
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; task2_fsm:pass_through_values|state[0]                                                                                                                                                                   ; 18      ;
 ; sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|tdo            ; 1       ;
 ; sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|jtag_ir_reg[1] ; 3       ;
 ; sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|jtag_ir_reg[2] ; 3       ;
-; Total number of inverted registers = 3                                                                                                                                                                   ;         ;
+; Total number of inverted registers = 4                                                                                                                                                                   ;         ;
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
@@ -360,16 +356,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                                                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[0]                                                                                                 ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[7]                                                                                                 ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3]                                                                                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[6]                                                                                                 ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task2_fsm_ebi_ver:pass_through_values|out_value[0]                                                                                                                                                                                ;
-; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[1]                                                  ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task2_fsm_ebi_ver:pass_through_values|iterator[2]                                                                                                                                                                                 ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task2_fsm_ebi_ver:pass_through_values|iterator_i[3]                                                                                                                                                                               ;
-; 24:1               ; 4 bits    ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[3]                                                       ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |ksa|task2_fsm_ebi_ver:pass_through_values|task2_swap_ij_fsm:loop_2_swap|iterator[0]                                                                                                                                                   ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |ksa|task2_fsm_ebi_ver:pass_through_values|task2_swap_ij_fsm:loop_2_swap|out_value[0]                                                                                                                                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[5]                                                                                                 ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[0]                                                  ;
+; 34:1               ; 8 bits    ; 176 LEs       ; 0 LEs                ; 176 LEs                ; Yes        ; |ksa|task2_fsm:pass_through_values|iterator_j[1]                                                                                                                                                                                       ;
+; 24:1               ; 4 bits    ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[0]                                                       ;
+; 36:1               ; 8 bits    ; 192 LEs       ; 16 LEs               ; 176 LEs                ; Yes        ; |ksa|task2_fsm:pass_through_values|out_value[2]                                                                                                                                                                                        ;
+; 38:1               ; 8 bits    ; 200 LEs       ; 16 LEs               ; 184 LEs                ; Yes        ; |ksa|task2_fsm:pass_through_values|iterator[6]                                                                                                                                                                                         ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|hub_minor_ver_reg[0]                    ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|hub_minor_ver_reg[1]                    ;
 ; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|irf_reg[1][2]                           ;
@@ -401,27 +395,30 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: task2_fsm_ebi_ver:pass_through_values ;
-+-------------------+----------+-----------------------------------------------------+
-; Parameter Name    ; Value    ; Type                                                ;
-+-------------------+----------+-----------------------------------------------------+
-; WAIT_STATE_AMOUNT ; 2        ; Signed Integer                                      ;
-; END_OF_MSG        ; 11111111 ; Unsigned Binary                                     ;
-; KEY_LENGTH        ; 3        ; Signed Integer                                      ;
-+-------------------+----------+-----------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: task2_fsm_ebi_ver:pass_through_values|task2_swap_ij_fsm:loop_2_swap ;
-+-------------------+----------+-----------------------------------------------------------------------------------+
-; Parameter Name    ; Value    ; Type                                                                              ;
-+-------------------+----------+-----------------------------------------------------------------------------------+
-; END_OF_MSG        ; 11111111 ; Unsigned Binary                                                                   ;
-; KEY_LENGTH        ; 3        ; Signed Integer                                                                    ;
-; WAIT_STATE_AMOUNT ; 3        ; Signed Integer                                                                    ;
-+-------------------+----------+-----------------------------------------------------------------------------------+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: task2_fsm:pass_through_values ;
++----------------+-----------+-----------------------------------------------+
+; Parameter Name ; Value     ; Type                                          ;
++----------------+-----------+-----------------------------------------------+
+; END_OF_MSG     ; 11111111  ; Unsigned Binary                               ;
+; start          ; 000000001 ; Unsigned Binary                               ;
+; loop_1         ; 000100010 ; Unsigned Binary                               ;
+; Iterate_i      ; 000100011 ; Unsigned Binary                               ;
+; intilize_mem   ; 000000100 ; Unsigned Binary                               ;
+; reset_i        ; 000000101 ; Unsigned Binary                               ;
+; load_s         ; 000000110 ; Unsigned Binary                               ;
+; load_mem_i     ; 000000111 ; Unsigned Binary                               ;
+; wait_grab_j    ; 000001000 ; Unsigned Binary                               ;
+; wait_2_grab_j  ; 000001001 ; Unsigned Binary                               ;
+; grab_j         ; 000001010 ; Unsigned Binary                               ;
+; wait_place_j   ; 000001011 ; Unsigned Binary                               ;
+; place_j        ; 000101100 ; Unsigned Binary                               ;
+; replace_i      ; 000001101 ; Unsigned Binary                               ;
+; wait_place_i   ; 000001110 ; Unsigned Binary                               ;
+; place_i        ; 000101111 ; Unsigned Binary                               ;
+; load_j_i       ; 000010000 ; Unsigned Binary                               ;
+; finished       ; 000011111 ; Unsigned Binary                               ;
++----------------+-----------+-----------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -486,26 +483,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: task2_fsm_ebi_ver:pass_through_values|lpm_divide:Mod0 ;
-+------------------------+----------------+--------------------------------------------------------------+
-; Parameter Name         ; Value          ; Type                                                         ;
-+------------------------+----------------+--------------------------------------------------------------+
-; LPM_WIDTHN             ; 8              ; Untyped                                                      ;
-; LPM_WIDTHD             ; 2              ; Untyped                                                      ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
-; LPM_PIPELINE           ; 0              ; Untyped                                                      ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                      ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                                                      ;
-; CBXI_PARAMETER         ; lpm_divide_62m ; Untyped                                                      ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                                                      ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                      ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                   ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                 ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                 ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                               ;
-+------------------------+----------------+--------------------------------------------------------------+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: task2_fsm:pass_through_values|lpm_divide:Mod0 ;
++------------------------+----------------+------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                 ;
++------------------------+----------------+------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                              ;
+; LPM_WIDTHD             ; 2              ; Untyped                                              ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                              ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                              ;
+; CBXI_PARAMETER         ; lpm_divide_62m ; Untyped                                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                       ;
++------------------------+----------------+------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -529,32 +526,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "task2_fsm_ebi_ver:pass_through_values|task2_swap_ij_fsm:loop_2_swap" ;
-+---------------+--------+----------+-------------------------------------------------------------+
-; Port          ; Type   ; Severity ; Details                                                     ;
-+---------------+--------+----------+-------------------------------------------------------------+
-; saved_value_i ; Output ; Info     ; Explicitly unconnected                                      ;
-; saved_value_j ; Output ; Info     ; Explicitly unconnected                                      ;
-+---------------+--------+----------+-------------------------------------------------------------+
-
-
-+-------------------------------------------------------------------+
-; Port Connectivity Checks: "task2_fsm_ebi_ver:pass_through_values" ;
-+---------------------+-------+----------+--------------------------+
-; Port                ; Type  ; Severity ; Details                  ;
-+---------------------+-------+----------+--------------------------+
-; secret_key[2][5..4] ; Input ; Info     ; Stuck at GND             ;
-; secret_key[2][2..1] ; Input ; Info     ; Stuck at GND             ;
-; secret_key[2][7]    ; Input ; Info     ; Stuck at GND             ;
-; secret_key[2][6]    ; Input ; Info     ; Stuck at VCC             ;
-; secret_key[2][3]    ; Input ; Info     ; Stuck at VCC             ;
-; secret_key[2][0]    ; Input ; Info     ; Stuck at VCC             ;
-; secret_key[1][7..2] ; Input ; Info     ; Stuck at GND             ;
-; secret_key[1][1]    ; Input ; Info     ; Stuck at VCC             ;
-; secret_key[1][0]    ; Input ; Info     ; Stuck at GND             ;
-; secret_key[0]       ; Input ; Info     ; Stuck at GND             ;
-+---------------------+-------+----------+--------------------------+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "task2_fsm:pass_through_values" ;
++---------------------+-------+----------+------------------+
+; Port                ; Type  ; Severity ; Details          ;
++---------------------+-------+----------+------------------+
+; secret_key[2][5..4] ; Input ; Info     ; Stuck at GND     ;
+; secret_key[2][2..1] ; Input ; Info     ; Stuck at GND     ;
+; secret_key[2][7]    ; Input ; Info     ; Stuck at GND     ;
+; secret_key[2][6]    ; Input ; Info     ; Stuck at VCC     ;
+; secret_key[2][3]    ; Input ; Info     ; Stuck at VCC     ;
+; secret_key[2][0]    ; Input ; Info     ; Stuck at VCC     ;
+; secret_key[1][7..2] ; Input ; Info     ; Stuck at GND     ;
+; secret_key[1][1]    ; Input ; Info     ; Stuck at VCC     ;
+; secret_key[1][0]    ; Input ; Info     ; Stuck at GND     ;
+; secret_key[0]       ; Input ; Info     ; Stuck at GND     ;
++---------------------+-------+----------+------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -571,27 +558,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 114                         ;
-;     CLR               ; 41                          ;
-;     ENA               ; 13                          ;
+; arriav_ff             ; 89                          ;
+;     CLR               ; 11                          ;
+;     CLR SCLR          ; 1                           ;
+;     ENA               ; 33                          ;
 ;     ENA CLR           ; 4                           ;
-;     ENA CLR SCLR      ; 8                           ;
-;     ENA CLR SCLR SLD  ; 32                          ;
+;     ENA CLR SCLR      ; 16                          ;
 ;     ENA CLR SLD       ; 8                           ;
-;     ENA SLD           ; 8                           ;
-; arriav_lcell_comb     ; 171                         ;
+;     ENA SLD           ; 16                          ;
+; arriav_lcell_comb     ; 150                         ;
 ;     arith             ; 43                          ;
 ;         0 data inputs ; 7                           ;
 ;         1 data inputs ; 24                          ;
 ;         3 data inputs ; 7                           ;
 ;         4 data inputs ; 5                           ;
-;     normal            ; 120                         ;
+;     normal            ; 99                          ;
 ;         0 data inputs ; 1                           ;
-;         2 data inputs ; 15                          ;
-;         3 data inputs ; 9                           ;
-;         4 data inputs ; 59                          ;
-;         5 data inputs ; 20                          ;
-;         6 data inputs ; 16                          ;
+;         2 data inputs ; 18                          ;
+;         3 data inputs ; 20                          ;
+;         4 data inputs ; 16                          ;
+;         5 data inputs ; 24                          ;
+;         6 data inputs ; 20                          ;
 ;     shared            ; 8                           ;
 ;         2 data inputs ; 4                           ;
 ;         3 data inputs ; 2                           ;
@@ -599,8 +586,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; boundary_port         ; 88                          ;
 ; stratixv_ram_block    ; 8                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 12.10                       ;
-; Average LUT depth     ; 3.84                        ;
+; Max LUT depth         ; 11.10                       ;
+; Average LUT depth     ; 3.73                        ;
 +-----------------------+-----------------------------+
 
 
@@ -650,7 +637,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Wed Mar 17 20:29:42 2021
+    Info: Processing started: Thu Mar 18 12:32:55 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off rc4 -c rc4
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file ksa.sv
@@ -665,6 +652,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file task2_s
     Info (12023): Found entity 1: task2_swap_ij_fsm
 Info (12021): Found 1 design units, including 1 entities, in source file task2_fsm_ebi_ver.sv
     Info (12023): Found entity 1: task2_fsm_ebi_ver
+Info (12021): Found 2 design units, including 2 entities, in source file multiplexer.sv
+    Info (12023): Found entity 1: mux4_binary_select
+    Info (12023): Found entity 2: mux_one_hot_select
 Info (12127): Elaborating entity "ksa" for the top level hierarchy
 Warning (10034): Output port "LEDR" at ksa.sv(7) has no driver
 Warning (10034): Output port "HEX0" at ksa.sv(8) has no driver
@@ -676,17 +666,8 @@ Warning (10034): Output port "HEX5" at ksa.sv(14) has no driver
 Warning (12125): Using design file sevensegmentdisplaydecoder.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: SevenSegmentDisplayDecoder
 Info (12128): Elaborating entity "SevenSegmentDisplayDecoder" for hierarchy "SevenSegmentDisplayDecoder:sevenseg"
-Info (12128): Elaborating entity "task2_fsm_ebi_ver" for hierarchy "task2_fsm_ebi_ver:pass_through_values"
-Warning (10858): Verilog HDL warning at task2_fsm_ebi_ver.sv(30): object iterator_k used but never assigned
-Warning (10230): Verilog HDL assignment warning at task2_fsm_ebi_ver.sv(279): truncated value with size 32 to match size of target (8)
-Warning (10230): Verilog HDL assignment warning at task2_fsm_ebi_ver.sv(296): truncated value with size 32 to match size of target (2)
-Warning (10030): Net "iterator_k" at task2_fsm_ebi_ver.sv(30) has no driver or initial value, using a default initial value '0'
-Info (12128): Elaborating entity "task2_swap_ij_fsm" for hierarchy "task2_fsm_ebi_ver:pass_through_values|task2_swap_ij_fsm:loop_2_swap"
-Warning (10230): Verilog HDL assignment warning at task2_swap_ij_fsm.sv(151): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at task2_swap_ij_fsm.sv(164): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at task2_swap_ij_fsm.sv(178): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at task2_swap_ij_fsm.sv(192): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at task2_swap_ij_fsm.sv(207): truncated value with size 32 to match size of target (2)
+Info (12128): Elaborating entity "task2_fsm" for hierarchy "task2_fsm:pass_through_values"
+Warning (10036): Verilog HDL or VHDL warning at task2_fsm.sv(28): object "mods" assigned a value but never read
 Info (12128): Elaborating entity "s_memory" for hierarchy "s_memory:output_to_S"
 Info (12128): Elaborating entity "altsyncram" for hierarchy "s_memory:output_to_S|altsyncram:altsyncram_component"
 Info (12130): Elaborated megafunction instantiation "s_memory:output_to_S|altsyncram:altsyncram_component"
@@ -746,9 +727,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file db/ip/s
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld73f98f60/submodules/alt_sld_fab_splitter.sv
     Info (12023): Found entity 1: alt_sld_fab_splitter
 Info (278001): Inferred 1 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "task2_fsm_ebi_ver:pass_through_values|Mod0"
-Info (12130): Elaborated megafunction instantiation "task2_fsm_ebi_ver:pass_through_values|lpm_divide:Mod0"
-Info (12133): Instantiated megafunction "task2_fsm_ebi_ver:pass_through_values|lpm_divide:Mod0" with the following parameter:
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "task2_fsm:pass_through_values|Mod0"
+Info (12130): Elaborated megafunction instantiation "task2_fsm:pass_through_values|lpm_divide:Mod0"
+Info (12133): Instantiated megafunction "task2_fsm:pass_through_values|lpm_divide:Mod0" with the following parameter:
     Info (12134): Parameter "LPM_WIDTHN" = "8"
     Info (12134): Parameter "LPM_WIDTHD" = "2"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -818,18 +799,18 @@ Info (144001): Generated suppressed messages file E:/Courses/CPEN311/Ebi/Labs/CP
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (15752): Ignored 12 Virtual Pin logic option assignments
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_RS".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_RW".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_EN".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[3]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_ON".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[0]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[7]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_RW".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[1]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[5]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[3]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[0]".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[6]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_RS".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[7]".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[4]".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[2]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[5]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_ON".
 Warning (21074): Design contains 13 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[0]"
     Warning (15610): No output dependent on input pin "KEY[1]"
@@ -844,16 +825,16 @@ Warning (21074): Design contains 13 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 421 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 392 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 53 output pins
-    Info (21061): Implemented 341 logic cells
+    Info (21061): Implemented 312 logic cells
     Info (21064): Implemented 8 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 97 warnings
-    Info: Peak virtual memory: 4956 megabytes
-    Info: Processing ended: Wed Mar 17 20:30:03 2021
-    Info: Elapsed time: 00:00:21
-    Info: Total CPU time (on all processors): 00:00:49
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 89 warnings
+    Info: Peak virtual memory: 4951 megabytes
+    Info: Processing ended: Thu Mar 18 12:33:14 2021
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:42
 
 
 +------------------------------------------+

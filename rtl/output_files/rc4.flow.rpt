@@ -1,5 +1,5 @@
 Flow report for rc4
-Wed Mar 17 20:31:12 2021
+Thu Mar 18 12:34:17 2021
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -41,15 +41,15 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +---------------------------------+--------------------------------------------+
-; Flow Status                     ; Successful - Wed Mar 17 20:31:03 2021      ;
+; Flow Status                     ; Successful - Thu Mar 18 12:34:08 2021      ;
 ; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                   ; rc4                                        ;
 ; Top-level Entity Name           ; ksa                                        ;
 ; Family                          ; Cyclone V                                  ;
 ; Device                          ; 5CSEMA5F31C6                               ;
 ; Timing Models                   ; Final                                      ;
-; Logic utilization (in ALMs)     ; 187 / 32,070 ( < 1 % )                     ;
-; Total registers                 ; 243                                        ;
+; Logic utilization (in ALMs)     ; 159 / 32,070 ( < 1 % )                     ;
+; Total registers                 ; 201                                        ;
 ; Total pins                      ; 69 / 457 ( 15 % )                          ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 2,048 / 4,065,280 ( < 1 % )                ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/17/2021 20:29:43 ;
+; Start date & time ; 03/18/2021 12:32:55 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; rc4                 ;
 +-------------------+---------------------+
@@ -82,7 +82,7 @@ agreement for further details.
 ; AUTO_RAM_RECOGNITION                              ; Off                                   ; On                 ; --          ; --         ;
 ; AUTO_ROM_RECOGNITION                              ; Off                                   ; On                 ; --          ; --         ;
 ; BLOCK_RAM_AND_MLAB_EQUIVALENT_POWER_UP_CONDITIONS ; Care                                  ; Auto               ; --          ; --         ;
-; COMPILER_SIGNATURE_ID                             ; 39908809259501.161603818318968        ; --                 ; --          ; --         ;
+; COMPILER_SIGNATURE_ID                             ; 39908809259501.161609597506968        ; --                 ; --          ; --         ;
 ; EXTRACT_VERILOG_STATE_MACHINES                    ; Off                                   ; On                 ; --          ; --         ;
 ; EXTRACT_VHDL_STATE_MACHINES                       ; Off                                   ; On                 ; --          ; --         ;
 ; FITTER_EFFORT                                     ; Standard Fit                          ; Auto Fit           ; --          ; --         ;
@@ -114,11 +114,11 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:20     ; 1.0                     ; 4956 MB             ; 00:00:49                           ;
-; Fitter                    ; 00:00:49     ; 2.7                     ; 7827 MB             ; 00:03:27                           ;
-; Assembler                 ; 00:00:08     ; 1.0                     ; 4843 MB             ; 00:00:08                           ;
-; TimeQuest Timing Analyzer ; 00:00:08     ; 1.0                     ; 5359 MB             ; 00:00:08                           ;
-; Total                     ; 00:01:25     ; --                      ; --                  ; 00:04:32                           ;
+; Analysis & Synthesis      ; 00:00:18     ; 1.0                     ; 4951 MB             ; 00:00:41                           ;
+; Fitter                    ; 00:00:44     ; 2.9                     ; 7800 MB             ; 00:03:03                           ;
+; Assembler                 ; 00:00:07     ; 1.0                     ; 4841 MB             ; 00:00:07                           ;
+; TimeQuest Timing Analyzer ; 00:00:08     ; 1.0                     ; 5352 MB             ; 00:00:08                           ;
+; Total                     ; 00:01:17     ; --                      ; --                  ; 00:03:59                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

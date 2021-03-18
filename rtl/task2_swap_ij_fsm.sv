@@ -125,6 +125,7 @@ module task2_swap_ij_fsm
 
 			fsm_finished <= 0;
 			wren <= 0;
+			//rden <= 0;
 			wait_count <= 2'b0;
 			
 			iterator <= 8'h00;
@@ -142,6 +143,7 @@ module task2_swap_ij_fsm
 
 					fsm_finished <= 0;
 					wren <= 0;
+					//rden <= 0;
 					wait_count <= 2'b0;
 					
 					iterator <= 8'h00;
@@ -153,6 +155,7 @@ module task2_swap_ij_fsm
 				WAIT_START:
 				begin
 					wren <= 0;
+					//rden <= 0;
 					wait_count <= 2'b0;			// may be redundant
 				end
 				
@@ -161,6 +164,7 @@ module task2_swap_ij_fsm
 					saved_value_i <= q;
 					iterator <= iterator_i;
 					wren <= 0;
+					//rden <= 1;
 					wait_count <= wait_count + 1;
 				end
 				WAIT_COPY_I:
@@ -175,6 +179,7 @@ module task2_swap_ij_fsm
 					saved_value_j <= q;
 					iterator <= iterator_j;
 					wren <= 0;
+					//rden <= 1;
 					wait_count <= wait_count + 1;
 				end
 				WAIT_COPY_J:
@@ -189,6 +194,7 @@ module task2_swap_ij_fsm
 					out_value <= saved_value_j;
 					iterator <= iterator_i;
 					wren <= 1;
+					//rden <= 1;
 					wait_count <= wait_count + 1;
 				end
 				WAIT_SWAP_I:
@@ -204,6 +210,7 @@ module task2_swap_ij_fsm
 					out_value <= saved_value_i;
 					iterator <= iterator_j;
 					wren <= 1;
+					//rden <= 1;
 					wait_count <= wait_count + 1;
 				end
 				WAIT_SWAP_J:
@@ -218,6 +225,7 @@ module task2_swap_ij_fsm
 				begin
 					fsm_finished <= 1;
 					wren <= 0;
+					//rden <= 0;
 					wait_count <= 2'b0;
 				end
 				

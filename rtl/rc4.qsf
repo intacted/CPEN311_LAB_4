@@ -920,4 +920,5 @@ set_global_assignment -name SYSTEMVERILOG_FILE task2_fsm.sv
 set_global_assignment -name CDF_FILE output_files/Chain1.cdf
 set_global_assignment -name SYSTEMVERILOG_FILE task2_swap_ij_fsm.sv
 set_global_assignment -name SYSTEMVERILOG_FILE task2_fsm_ebi_ver.sv
+set_global_assignment -name SYSTEMVERILOG_FILE multiplexer.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
