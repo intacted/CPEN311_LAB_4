@@ -92,7 +92,12 @@ task2_swap_ij_fsm loop_2_swap
 
 		else
 		case (state)
-			start: state <= Iterate_i; //starts FSM
+			start:
+				begin
+					state <= Iterate_i; //starts FSM
+					iterator <= 8'h0;
+					iterator_j <= 8'h0;
+				end
 
 			Iterate_i: begin //
 				if (iterator_i == END_OF_MSG)

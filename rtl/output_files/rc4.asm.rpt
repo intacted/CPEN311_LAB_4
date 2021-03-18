@@ -1,5 +1,5 @@
 Assembler report for rc4
-Tue Mar 16 17:24:17 2021
+Wed Mar 17 20:31:03 2021
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Mar 16 17:24:17 2021 ;
+; Assembler Status      ; Successful - Wed Mar 17 20:31:03 2021 ;
 ; Revision Name         ; rc4                                   ;
 ; Top-level Entity Name ; ksa                                   ;
 ; Family                ; Cyclone V                             ;
@@ -79,8 +79,8 @@ agreement for further details.
 ; Option         ; Setting                                                                     ;
 +----------------+-----------------------------------------------------------------------------+
 ; Device         ; 5CSEMA5F31C6                                                                ;
-; JTAG usercode  ; 0x00B9DF79                                                                  ;
-; Checksum       ; 0x00B9DF79                                                                  ;
+; JTAG usercode  ; 0x00BABDD0                                                                  ;
+; Checksum       ; 0x00BABDD0                                                                  ;
 +----------------+-----------------------------------------------------------------------------+
 
 
@@ -90,13 +90,13 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Tue Mar 16 17:24:10 2021
+    Info: Processing started: Wed Mar 17 20:30:55 2021
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off rc4 -c rc4
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4844 megabytes
-    Info: Processing ended: Tue Mar 16 17:24:17 2021
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:07
+    Info: Peak virtual memory: 4843 megabytes
+    Info: Processing ended: Wed Mar 17 20:31:03 2021
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:08
 
 

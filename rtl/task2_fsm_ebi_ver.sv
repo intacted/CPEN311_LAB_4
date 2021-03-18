@@ -29,7 +29,7 @@ module task2_fsm_ebi_ver
 			
 	logic [7:0] iterator_i, iterator_j, iterator_k, saved_value_i, saved_value_j;		
 	logic [1:0] wait_count;	
-	
+	parameter WAIT_STATE_AMOUNT = 2;
 	parameter END_OF_MSG = 8'hFF;	
 	parameter KEY_LENGTH = 3;
 	
@@ -39,8 +39,8 @@ module task2_fsm_ebi_ver
 	
 	// LOOP 2 WIRES and REGS:
 	logic request_to_write_loop_2;
-	logic requested_iterator_loop_2;
-	logic requested_out_value_loop_2;
+	logic [7:0] requested_iterator_loop_2;
+	logic [7:0] requested_out_value_loop_2;
 	
 	logic start_loop_2;
 	logic finished_loop_2;
@@ -114,7 +114,7 @@ task2_swap_ij_fsm loop_2_swap
 				
 				WAIT_ITERATE_LOOP_2:
 				begin
-					next_state = (wait_count == 3) ? SWAP_IJ_LOOP_2 : WAIT_ITERATE_LOOP_2;
+					next_state = (wait_count === WAIT_STATE_AMOUNT) ? SWAP_IJ_LOOP_2 : WAIT_ITERATE_LOOP_2;
 				end
 				
 				SWAP_IJ_LOOP_2:
@@ -252,6 +252,9 @@ task2_swap_ij_fsm loop_2_swap
 					
 					out_value <= 8'h00;
 					
+					//
+					wait_count <= 2'b0;
+					
 					// Make sure the swap-ij is on stand-by
 					reset_loop_2 <= 1'b1;
 					start_loop_2 <= 1'b0;
@@ -273,12 +276,13 @@ task2_swap_ij_fsm loop_2_swap
 				
 				ITERATE_LOOP_2:
 				begin
-					iterator_j <= iterator_j + q + mods;	//(secret_key % KEY_LENGTH);
 					iterator_i <= iterator_i + 1;
 					iterator <= iterator_i;
 					
 					//reset_loop_2 <= 1'b1;
 					//start_loop_2 <= 1'b0;
+					
+					wait_count <= 2'b0;
 				end
 				
 				WAIT_ITERATE_LOOP_2:
@@ -288,11 +292,13 @@ task2_swap_ij_fsm loop_2_swap
 					
 					reset_loop_2 <= 1'b1;
 					start_loop_2 <= 1'b0;
+					
+					wait_count <= wait_count + 1;
 				end
 				
 				SWAP_IJ_LOOP_2:
 				begin
-					iterator <= requested_iterator_loop_2;
+					iterator <= requested_iterator_loop_2;				// MUX use assign
 					out_value <= requested_out_value_loop_2;
 					
 					reset_loop_2 <= 1'b0;
