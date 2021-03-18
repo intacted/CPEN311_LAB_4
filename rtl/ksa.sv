@@ -47,24 +47,6 @@ module ksa(
 		.out_value(out_value),
 		.wren(wren)
 	);
-
-
-
-/*
-	task2_fsm pass_through_values(
-		// Inputs
-		.clk(clk),
-		.reset(reset_n),
-		.secret_key(key),
-		.q(q),
-		
-		// Outputs
-		.iterator(iterator),
-		.out_value(out_value),
-		.wren(wren)
-	);
-*/
-	
 	 
 	s_memory output_to_S(
 		.address(iterator),

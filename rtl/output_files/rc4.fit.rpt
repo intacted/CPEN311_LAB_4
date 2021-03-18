@@ -1,5 +1,5 @@
 Fitter report for rc4
-Thu Mar 18 12:33:59 2021
+Thu Mar 18 16:10:23 2021
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -66,7 +66,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------------+--------------------------------------------+
-; Fitter Status                   ; Successful - Thu Mar 18 12:33:59 2021      ;
+; Fitter Status                   ; Successful - Thu Mar 18 16:10:23 2021      ;
 ; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                   ; rc4                                        ;
 ; Top-level Entity Name           ; ksa                                        ;
@@ -154,13 +154,13 @@ agreement for further details.
 ; Number detected on machine ; 16          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 2.86        ;
+; Average used               ; 2.95        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;  13.6%      ;
-;     Processors 9-16        ;  11.4%      ;
+;     Processors 2-8         ;  14.3%      ;
+;     Processors 9-16        ;  11.9%      ;
 +----------------------------+-------------+
 
 
@@ -3610,7 +3610,7 @@ Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 5% of the available device resources in the region that extends from location X0_Y0 to location X10_Y10
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
-Info (11888): Total time spent on timing analysis during the Fitter is 1.05 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.99 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -3619,10 +3619,10 @@ Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:05
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/output_files/rc4.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 193 warnings
-    Info: Peak virtual memory: 7800 megabytes
-    Info: Processing ended: Thu Mar 18 12:33:59 2021
-    Info: Elapsed time: 00:00:44
-    Info: Total CPU time (on all processors): 00:03:03
+    Info: Peak virtual memory: 7849 megabytes
+    Info: Processing ended: Thu Mar 18 16:10:23 2021
+    Info: Elapsed time: 00:00:42
+    Info: Total CPU time (on all processors): 00:03:01
 
 
 +----------------------------+

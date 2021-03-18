@@ -33,6 +33,12 @@ module task2_fsm_ebi_ver
 	
 	wire [7:0] mods;
 	assign mods = secret_key[iterator%KEY_LENGTH]; // secret_key[i mod keylength]
+	
+	
+	// RAM and ROM
+	decrypted_msg RAM2 (.address(/*addr_d*/), .data(/*data_d*/), .wren(/*wren_d*/));
+
+	encrypted_msg ROM (.q(/*q_m*/), .address (/*addr_m*/));
 
 	// LOOP 1 WIRES & REGS:
 	logic final_increment;
@@ -116,7 +122,7 @@ task2_swap_ij_fsm loop_2_swap
 				
 				INITIALIZE_S_ARRAY: 
 				begin
-					next_state = (iterator_i == END_OF_MSG && final_increment == 1) ? COMPLETED_S_ARRAY : INITIALIZE_S_ARRAY;
+					next_state = (iterator_i == END_OF_MSG/* && final_increment == 1*/) ? COMPLETED_S_ARRAY : INITIALIZE_S_ARRAY;
 				end 
 				
 				COMPLETED_S_ARRAY: 
@@ -190,7 +196,7 @@ task2_swap_ij_fsm loop_2_swap
 				
 				COMPLETED_S_ARRAY: 
 				begin	
-					wren <= 0;
+					wren <= 1;
 				end
 				
 				// Loop 2
