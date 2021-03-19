@@ -35,7 +35,7 @@ module ksa(
 	logic [7:0] out_value;
 	 
 	
-	task2_fsm_ebi_ver pass_through_values(
+	task2_fsm pass_through_values(
 		// Inputs
 		.clk(clk),
 		.reset(reset_n),

@@ -1,0 +1,29 @@
+Fri Mar 19 13:50:08 PDT 2021
+Trace back: unmatched open brace in list
+    while executing
+"foreach v $value {
+            set l [string bytelength $v]
+            if {$l <= 0} {
+                set v2 [lreplace $v2 $i $i "."]
+               ..."
+    (procedure "Wave::BalloonPopUpValue" line 220)
+    invoked from within
+"Wave::BalloonPopUpValue $w $x $y $X $Y $msgarea"
+    (procedure "Wave::_balloontext" line 7)
+    invoked from within
+"Wave::_balloontext 0 .main_pane.wave.interior.cs.body.pw.wf.tree.tree1 .main_pane.wave.interior.cs.body.pw.wf.grid.row0,wave.data 710 342 3185 534"
+    ("eval" body line 1)
+    invoked from within
+"eval Wave::_balloontext 0 $tree $args"
+    (procedure "Wave::BalloonWaveAreaText" line 2)
+    invoked from within
+"Wave::BalloonWaveAreaText .main_pane.wave.interior.cs.body.pw.wf.tree.tree1 .main_pane.wave.interior.cs.body.pw.wf.grid.row0,wave.data 710 342 3185 53..."
+    ("eval" body line 1)
+    invoked from within
+"eval $_d($w,getmsgcb) $w $x $y $X $Y"
+    (procedure "mtiBalloon::_popUp" line 15)
+    invoked from within
+"mtiBalloon::_popUp .main_pane.wave.interior.cs.body.pw.wf.grid.row0,wave.data 710 342 3185 534"
+    ("after" script)
+  <2:C:/altera/14.1/modelsim_ase/win32aloem/tk8.5/bgerror.tcl:92: ::tkerror {unmatched open brace in list}
+  <1:eval:1: ::tk::dialog::error::bgerror {unmatched open brace in list}

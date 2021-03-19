@@ -14,7 +14,7 @@ module task2_TB;
     parameter clock_scale = 5'd20;		// for clk
 									
 	 
-	task2_fsm_ebi_ver pass_through_values(
+	task2_fsm pass_through_values(
 		// Inputs
 		.clk(clk),
 		.reset(reset_n),

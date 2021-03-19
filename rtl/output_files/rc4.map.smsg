@@ -1,2 +1,2 @@
 Info (10281): Verilog HDL Declaration information at ksa.sv(5): object "KEY" differs only in case from object "key" in the same scope
-Warning (10268): Verilog HDL information at task2_fsm_ebi_ver.sv(382): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at task2a_fsm_ebi_ver.sv(211): always construct contains both blocking and non-blocking assignments
