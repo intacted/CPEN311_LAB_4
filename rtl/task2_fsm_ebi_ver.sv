@@ -28,20 +28,22 @@ module task2_fsm_ebi_ver
 	logic [7:0] iterator_i, iterator_j, iterator_k, saved_value_i, saved_value_j;		
 	logic [1:0] wait_count;	
 	parameter WAIT_STATE_AMOUNT = 2;
-	parameter END_OF_MSG = 8'hFF;	
+	parameter END_OF_MSG = 6'd31; //8'hFF;	
 	parameter KEY_LENGTH = 3;
 	
 	wire [7:0] mods;
 	assign mods = secret_key[iterator_i%KEY_LENGTH]; // secret_key[i mod keylength]
 	
-	
-	// RAM and ROM
-	decrypted_msg RAM2 (.address(/*addr_d*/), .data(/*data_d*/), .wren(/*wren_d*/));
 
-	encrypted_msg ROM (.q(/*q_m*/), .address (/*addr_m*/));
+	// RAM and ROM
+	logic [7:0] q_decrypted, q_encrypted;
+		
+	decrypted_msg RAM2 (.q(q_decrypted), .address(iterator_k), .data(/*data_d*/), .wren(/*wren_d*/), .clock(clk));
+
+	encrypted_msg ROM (.q(q_encrypted), .address (iterator_k), .clock(clk));
 
 	// LOOP 1 WIRES & REGS:
-	logic final_increment;
+	//logic final_increment;
 	
 	// Iterator selection
 	
@@ -51,14 +53,19 @@ module task2_fsm_ebi_ver
 	logic [7:0] requested_iterator_loop_2;
 	logic request_iterator_loop_2_flag; 
 	
-	mux_one_hot_select #(/*BIT_WIDTH*/ 8, /*INPUT_NUMBER*/ 2) iterator_selector
+	logic [7:0] requested_iterator_loop_3;
+	logic request_iterator_loop_3_flag; 
+	
+	logic [7:0] requested_iterator_swap_3;
+	logic request_iterator_swap_3_flag; 
+	
+	mux_one_hot_select #(/*BIT_WIDTH*/ 8, /*INPUT_NUMBER*/ 4) iterator_selector
 	(	// Inputs
-		.select({request_iterator_loop_2_flag, request_iterator_main_loop_flag}),
-		.a('{requested_iterator_loop_2,requested_iterator_main_loop}),
+		.select({request_iterator_swap_3_flag, request_iterator_loop_3_flag, request_iterator_loop_2_flag, request_iterator_main_loop_flag}),
+		.a('{requested_iterator_swap_3, requested_iterator_loop_3, requested_iterator_loop_2,requested_iterator_main_loop}),
 		
 		// Outputs 
 		.out(iterator)
-	
 	);
 	
 	
@@ -87,6 +94,35 @@ task2_swap_ij_fsm loop_2_swap
 							.wren(request_to_write_loop_2),
 							.fsm_finished(finished_loop_2)
 						);
+						
+	// LOOP 3 WIRES & REGS:
+	logic request_to_write_swap_3;
+	logic [7:0] requested_out_value_swap_3;
+	
+	logic start_swap_3;
+	logic finished_swap_3;
+	logic reset_swap_3;
+	
+	logic [7:0] f; 
+	assign f = saved_value_i + saved_value_j;
+	
+task2_swap_ij_fsm loop_3_swap
+						(	// Inputs
+							.clk(clk),
+					   	.reset(reset_swap_3),
+							.fsm_start(start_swap_3),
+							.q(q), 
+							.iterator_i(iterator_i), 
+							.iterator_j(iterator_j),
+							
+							// Outputs
+							.iterator(requested_iterator_swap_3), 
+							.out_value(requested_out_value_swap_3),       
+							.saved_value_i(saved_value_i), 								// optional output for use in loop 3
+							.saved_value_j(saved_value_j), 								// optional output for use in loop 3
+							.wren(request_to_write_swap_3),
+							.fsm_finished(finished_swap_3)
+						);
 	
 	// Defining states
 	enum int unsigned { 
@@ -96,8 +132,6 @@ task2_swap_ij_fsm loop_2_swap
 		COMPLETED_S_ARRAY = 2,
 		
 		// Loop 2
-		//ITERATE_LOOP_2 = 3,
-		//WAIT_ITERATE_LOOP_2 = 15,
 		ITERATE_I_LOOP_2 = 3,
 		WAIT_FOR_I_LOOP_2 = 4,
 		ITERATE_J_LOOP_2 = 5,
@@ -106,11 +140,15 @@ task2_swap_ij_fsm loop_2_swap
 		COMPLETED_LOOP_2 = 8,
 		
 		// Loop 3
-		ITERATE_LOOP_3 = 9,
-		SWAP_IJ_LOOP_3 = 10,
-		RETRIEVE_K_LOOP_3 = 11,
-		OUTPUT_K_LOOP_3 =12,
-		COMPLETED_DECRYPTION = 13
+		START_LOOP_3 = 9,
+		ITERATE_I_LOOP_3 = 10,
+		WAIT_FOR_I_LOOP_3 = 11, 
+		ITERATE_J_LOOP_3 = 12,
+		WAIT_FOR_J_LOOP_3 = 13,
+		SWAP_IJ_LOOP_3 = 14,
+		RETRIEVE_K_LOOP_3 = 15,
+		OUTPUT_K_LOOP_3 =16,
+		COMPLETED_DECRYPTION = 17
 		
 	} state, next_state;		
 	
@@ -176,25 +214,50 @@ task2_swap_ij_fsm loop_2_swap
 				
 				COMPLETED_LOOP_2: 
 				begin
-					next_state = COMPLETED_LOOP_2;
-					//next_state = ITERATE_LOOP_3;
+					//next_state = COMPLETED_LOOP_2;
+					next_state = START_LOOP_3;
 				end 
 				
 				// Loop 3
-				ITERATE_LOOP_3: 
+				START_LOOP_3:
 				begin
-					next_state = SWAP_IJ_LOOP_3;
-				end 
+					next_state = ITERATE_I_LOOP_3;
+				end
+					
+				ITERATE_I_LOOP_3:
+				begin
+					next_state = WAIT_FOR_I_LOOP_3;
+				end
+				
+				WAIT_FOR_I_LOOP_3:
+				begin
+					next_state = (wait_count === WAIT_STATE_AMOUNT) ? ITERATE_J_LOOP_3 : WAIT_FOR_I_LOOP_3;
+				end
+				
+				ITERATE_J_LOOP_3:
+				begin
+					next_state = WAIT_FOR_J_LOOP_3;
+				end
+				
+				WAIT_FOR_J_LOOP_3:
+				begin
+					next_state = (wait_count === WAIT_STATE_AMOUNT) ? SWAP_IJ_LOOP_3 : WAIT_FOR_J_LOOP_3;
+				end
 				
 				SWAP_IJ_LOOP_3: 
 				begin
-					next_state = SWAP_IJ_LOOP_3; // FIX THIS
+					next_state = finished_swap_3 ? RETRIEVE_K_LOOP_3 : SWAP_IJ_LOOP_3; // FIX THIS
 				end 
 				
 				RETRIEVE_K_LOOP_3: 
 				begin
-					next_state = (iterator_k == END_OF_MSG) ? COMPLETED_DECRYPTION : ITERATE_LOOP_3;
+					next_state = OUTPUT_K_LOOP_3;
 				end 
+				
+				OUTPUT_K_LOOP_3:
+				begin
+					next_state = (iterator_k == END_OF_MSG) ? COMPLETED_DECRYPTION : ITERATE_I_LOOP_3;
+				end
 				
 				COMPLETED_DECRYPTION: 
 				begin
@@ -268,7 +331,22 @@ task2_swap_ij_fsm loop_2_swap
 				end	
 				
 				// Loop 3
-				ITERATE_LOOP_3:
+				ITERATE_I_LOOP_3:
+				begin	
+					wren <= 0;
+				end	
+				
+				WAIT_FOR_I_LOOP_3:
+				begin	
+					wren <= 0;
+				end	
+				
+				ITERATE_J_LOOP_3:
+				begin	
+					wren <= 0;
+				end	
+				
+				WAIT_FOR_J_LOOP_3:
 				begin	
 					wren <= 0;
 				end	
@@ -310,13 +388,16 @@ task2_swap_ij_fsm loop_2_swap
 			requested_iterator_main_loop <= 8'h00;
 			iterator_i <= 8'h00;
 			iterator_j <= 8'h00;
+			iterator_k <= 8'h00;
 			
 			request_iterator_main_loop_flag <= 1'b0;
 			request_iterator_loop_2_flag <= 1'b0; 
+			request_iterator_loop_3_flag <= 1'b0; 
+			request_iterator_swap_3_flag <= 1'b0; 
 			
 			out_value <= 8'h00;
 			
-			final_increment <= 1'b0;
+			//final_increment <= 1'b0;
 		end
 		
 		// If not resetting, normal operation
@@ -340,7 +421,7 @@ task2_swap_ij_fsm loop_2_swap
 					wait_count <= 2'b0;
 					
 					//
-					final_increment <= 1'b0;
+					//final_increment <= 1'b0;
 					
 					// Make sure the swap-ij is on stand-by
 					reset_loop_2 <= 1'b1;
@@ -355,8 +436,8 @@ task2_swap_ij_fsm loop_2_swap
 					out_value <= iterator_i;
 					
 					wait_count <= 2'b0;				// only needed for final step
-					if(iterator === END_OF_MSG)
-						final_increment <= 1'b1;	// there may be a more efficient solution
+					//if(iterator === END_OF_MSG)
+					//	final_increment <= 1'b1;	// there may be a more efficient solution
 				end
 				
 				COMPLETED_S_ARRAY:
@@ -413,7 +494,7 @@ task2_swap_ij_fsm loop_2_swap
 					request_iterator_main_loop_flag <= 1'b0;
 					request_iterator_loop_2_flag <= 1'b1; 
 					
-					wait_count <= wait_count + 1;
+					wait_count <= wait_count + 2'b01;
 				end
 				
 			   /*	
@@ -441,6 +522,70 @@ task2_swap_ij_fsm loop_2_swap
 					
 					reset_loop_2 <= 1'b0;
 					start_loop_2 <= 1'b1;
+				end
+				
+				START_LOOP_3:
+				begin
+					iterator_i <= 0;
+					iterator_j <= 0;
+					iterator_k <= 0;
+					
+					request_iterator_loop_3_flag <= 1'b1; 
+					request_iterator_swap_3_flag <= 1'b0; 
+				end
+				
+				ITERATE_I_LOOP_3:
+				begin
+					wait_count <= 2'b0;
+					iterator_i <= iterator_i + 1;
+					
+					requested_iterator_loop_3 <= iterator_i;
+				end
+				
+				WAIT_FOR_I_LOOP_3:
+				begin
+					wait_count <= wait_count + 2'b01;
+				end
+				
+				ITERATE_J_LOOP_3:
+				begin
+					wait_count <= 2'b0;
+					iterator_j <= iterator_j + q;
+				end
+				
+				WAIT_FOR_J_LOOP_3:
+				begin
+					wait_count <= wait_count + 2'b01;
+					
+					request_iterator_loop_3_flag <= 1'b0; 
+					request_iterator_swap_3_flag <= 1'b1; 
+					
+					reset_swap_3 <= 1'b1;
+					start_swap_3 <= 1'b0;
+				end
+				
+				SWAP_IJ_LOOP_3:
+				begin
+					request_iterator_swap_3_flag <= 1'b1; 
+					
+					out_value <= requested_out_value_swap_3;
+					
+					reset_swap_3 <= 1'b0;
+					start_swap_3 <= 1'b1;
+				end
+				
+				RETRIEVE_K_LOOP_3:
+				begin
+					request_iterator_loop_3_flag <= 1'b1; 
+					request_iterator_swap_3_flag <= 1'b0; 
+					
+					reset_swap_3 <= 1'b1;
+					start_swap_3 <= 1'b0;
+				end
+				
+				OUTPUT_K_LOOP_3:
+				begin
+					q_decrypted <= f ^ q_encrypted;
 				end
 
 				COMPLETED_DECRYPTION:
