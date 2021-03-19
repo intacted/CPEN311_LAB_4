@@ -150,7 +150,7 @@ module task2_swap_ij_fsm
 				end
 				START:
 				begin
-					wait_count <= wait_count + 1;
+					wait_count <= wait_count + 8'h01;
 				end
 				WAIT_START:
 				begin
@@ -165,7 +165,7 @@ module task2_swap_ij_fsm
 					iterator <= iterator_i;
 					wren <= 0;
 					//rden <= 1;
-					wait_count <= wait_count + 1;
+					wait_count <= wait_count + 8'h01;
 				end
 				WAIT_COPY_I:
 				begin
@@ -180,7 +180,7 @@ module task2_swap_ij_fsm
 					iterator <= iterator_j;
 					wren <= 0;
 					//rden <= 1;
-					wait_count <= wait_count + 1;
+					wait_count <= wait_count + 8'h01;
 				end
 				WAIT_COPY_J:
 				begin
@@ -195,7 +195,7 @@ module task2_swap_ij_fsm
 					iterator <= iterator_i;
 					wren <= 1;
 					//rden <= 1;
-					wait_count <= wait_count + 1;
+					wait_count <= wait_count + 8'h01;
 				end
 				WAIT_SWAP_I:
 				begin
@@ -211,7 +211,7 @@ module task2_swap_ij_fsm
 					iterator <= iterator_j;
 					wren <= 1;
 					//rden <= 1;
-					wait_count <= wait_count + 1;
+					wait_count <= wait_count + 8'h01;
 				end
 				WAIT_SWAP_J:
 				begin

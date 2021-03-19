@@ -32,7 +32,7 @@ module task2_fsm_ebi_ver
 	parameter KEY_LENGTH = 3;
 	
 	wire [7:0] mods;
-	assign mods = secret_key[iterator%KEY_LENGTH]; // secret_key[i mod keylength]
+	assign mods = secret_key[iterator_i%KEY_LENGTH]; // secret_key[i mod keylength]
 	
 	
 	// RAM and ROM
@@ -96,17 +96,21 @@ task2_swap_ij_fsm loop_2_swap
 		COMPLETED_S_ARRAY = 2,
 		
 		// Loop 2
-		ITERATE_LOOP_2 = 3,
-		WAIT_ITERATE_LOOP_2 = 15,
-		SWAP_IJ_LOOP_2 = 4,
-		COMPLETED_LOOP_2 = 7,
+		//ITERATE_LOOP_2 = 3,
+		//WAIT_ITERATE_LOOP_2 = 15,
+		ITERATE_I_LOOP_2 = 3,
+		WAIT_FOR_I_LOOP_2 = 4,
+		ITERATE_J_LOOP_2 = 5,
+		WAIT_FOR_J_LOOP_2 = 6,
+		SWAP_IJ_LOOP_2 = 7,
+		COMPLETED_LOOP_2 = 8,
 		
 		// Loop 3
-		ITERATE_LOOP_3 = 8,
-		SWAP_IJ_LOOP_3 = 9,
-		RETRIEVE_K_LOOP_3 = 12,
-		OUTPUT_K_LOOP_3 =13,
-		COMPLETED_DECRYPTION = 14
+		ITERATE_LOOP_3 = 9,
+		SWAP_IJ_LOOP_3 = 10,
+		RETRIEVE_K_LOOP_3 = 11,
+		OUTPUT_K_LOOP_3 =12,
+		COMPLETED_DECRYPTION = 13
 		
 	} state, next_state;		
 	
@@ -129,10 +133,11 @@ task2_swap_ij_fsm loop_2_swap
 				begin
 					//next_state = COMPLETED_S_ARRAY; 
 					//next_state = ITERATE_LOOP_2;
-					next_state = (wait_count === WAIT_STATE_AMOUNT) ? WAIT_ITERATE_LOOP_2 : COMPLETED_S_ARRAY;
+					next_state = (wait_count === WAIT_STATE_AMOUNT) ? WAIT_FOR_I_LOOP_2 : COMPLETED_S_ARRAY;
 				end 
 				
 				// Loop 2
+				/*
 				ITERATE_LOOP_2: 
 				begin
 					next_state = (iterator_i == END_OF_MSG) ? COMPLETED_LOOP_2 : WAIT_ITERATE_LOOP_2;// SWAP_IJ_LOOP_2;
@@ -142,10 +147,31 @@ task2_swap_ij_fsm loop_2_swap
 				begin
 					next_state = (wait_count === WAIT_STATE_AMOUNT) ? SWAP_IJ_LOOP_2 : WAIT_ITERATE_LOOP_2;
 				end
+				*/
+				
+				ITERATE_I_LOOP_2: 
+				begin
+					next_state = (iterator_i == END_OF_MSG) ? COMPLETED_LOOP_2 : WAIT_FOR_I_LOOP_2;// SWAP_IJ_LOOP_2;
+				end 
+				
+				WAIT_FOR_I_LOOP_2:
+				begin
+					next_state = (wait_count === WAIT_STATE_AMOUNT) ? ITERATE_J_LOOP_2 : WAIT_FOR_I_LOOP_2;
+				end
+				
+				ITERATE_J_LOOP_2:
+				begin
+					next_state = WAIT_FOR_J_LOOP_2;
+				end
+				
+				WAIT_FOR_J_LOOP_2:
+				begin
+					next_state = (wait_count === WAIT_STATE_AMOUNT) ? SWAP_IJ_LOOP_2 : WAIT_FOR_J_LOOP_2;
+				end
 				
 				SWAP_IJ_LOOP_2:
 				begin
-					next_state = finished_loop_2 ? ITERATE_LOOP_2 : SWAP_IJ_LOOP_2;	// Change state once complete, otherwise stay
+					next_state = finished_loop_2 ? ITERATE_I_LOOP_2 : SWAP_IJ_LOOP_2;	// Change state once complete, otherwise stay
 				end
 				
 				COMPLETED_LOOP_2: 
@@ -200,12 +226,33 @@ task2_swap_ij_fsm loop_2_swap
 				end
 				
 				// Loop 2
+				/*
 				ITERATE_LOOP_2:
 				begin	
 					wren <= 0;
 				end	
 				
 				WAIT_ITERATE_LOOP_2:
+				begin	
+					wren <= 0;
+				end	
+				*/
+				ITERATE_I_LOOP_2:
+				begin	
+					wren <= 0;
+				end	
+				
+				WAIT_FOR_I_LOOP_2:
+				begin	
+					wren <= 0;
+				end	
+				
+				ITERATE_J_LOOP_2:
+				begin	
+					wren <= 0;
+				end	
+				
+				WAIT_FOR_J_LOOP_2:
 				begin	
 					wren <= 0;
 				end	
@@ -315,18 +362,21 @@ task2_swap_ij_fsm loop_2_swap
 				COMPLETED_S_ARRAY:
 				begin
 					iterator_i <= 8'h00;
+					out_value <= iterator_i;
 					requested_iterator_main_loop <= iterator_i;
 					request_iterator_main_loop_flag <= 1'b1;
 					
 					// maybe add first stage of iterate key
-					wait_count <= wait_count + 1;
+					wait_count <= wait_count + 2'b01;
 				end
 				
-				ITERATE_LOOP_2:
+				ITERATE_I_LOOP_2:
 				begin
-					iterator_i <= iterator_i + 1;
+					iterator_i <= iterator_i + 8'h01;
 					requested_iterator_main_loop <= iterator_i;
+					
 					request_iterator_main_loop_flag <= 1'b1;
+					request_iterator_loop_2_flag <= 1'b0; 
 					
 					//reset_loop_2 <= 1'b1;
 					//start_loop_2 <= 1'b0;
@@ -334,9 +384,42 @@ task2_swap_ij_fsm loop_2_swap
 					wait_count <= 2'b0;
 				end
 				
+				WAIT_FOR_I_LOOP_2:
+				begin
+					requested_iterator_main_loop <= iterator_i;
+					
+					request_iterator_main_loop_flag <= 1'b1;
+					request_iterator_loop_2_flag <= 1'b0; 
+					
+					wait_count <= wait_count + 2'b01;
+				end
+				
+				ITERATE_J_LOOP_2:
+				begin
+					iterator_j = (iterator_j + q + mods) % 256;	//(secret_key % KEY_LENGTH); // can also be implemented with shift //&?&
+					requested_iterator_main_loop <= iterator_i;
+					
+					request_iterator_main_loop_flag <= 1'b1;
+					request_iterator_loop_2_flag <= 1'b0; 
+					
+					reset_loop_2 <= 1'b1;
+					start_loop_2 <= 1'b0;
+					
+					wait_count <= 2'b0;
+				end
+				
+				WAIT_FOR_J_LOOP_2:
+				begin
+					request_iterator_main_loop_flag <= 1'b0;
+					request_iterator_loop_2_flag <= 1'b1; 
+					
+					wait_count <= wait_count + 1;
+				end
+				
+			   /*	
 				WAIT_ITERATE_LOOP_2:
 				begin
-					iterator_j <= iterator_j + q + mods;	//(secret_key % KEY_LENGTH);
+					iterator_j <= (iterator_j + q + mods) % 256;	//(secret_key % KEY_LENGTH); // can also be implemented with shift
 					requested_iterator_main_loop <= iterator_i;
 					
 					request_iterator_main_loop_flag <= 1'b0;
@@ -347,6 +430,7 @@ task2_swap_ij_fsm loop_2_swap
 					
 					wait_count <= wait_count + 1;
 				end
+				*/
 				
 				SWAP_IJ_LOOP_2:
 				begin
