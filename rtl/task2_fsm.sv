@@ -17,7 +17,7 @@ assign out_value = finish_FSM_1 ? out_value_2 : out_value_1;
 assign wren = finish_FSM_1 ? wren_2 : wren_1;
 assign iterator= finish_FSM_1 ? iterator_2 : iterator_1;
 
-	task2a_fsm_ebi_ver FSM_1 
+	task2a_fsm FSM_2a 
 		(  // Inputs
 			.clk(clk),
 		   .reset(reset),
@@ -32,7 +32,7 @@ assign iterator= finish_FSM_1 ? iterator_2 : iterator_1;
 		   .finish_FSM_1(finish_FSM_1)
 		);
 
-	task2b_fsm_ebi_ver FSM_2
+	task2b_fsm FSM_2b
 		(   // Inputs
 			.clk(clk),
 			.reset(reset),

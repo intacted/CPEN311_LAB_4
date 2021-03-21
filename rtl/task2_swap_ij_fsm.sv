@@ -28,7 +28,7 @@ module task2_swap_ij_fsm
 	parameter END_OF_MSG = 8'hFF;	
 	parameter KEY_LENGTH = 3;
 	
-	parameter WAIT_STATE_AMOUNT = 3;
+	parameter WAIT_STATE_AMOUNT = 2; // changed from 3
 	logic [1:0] wait_count;
 	
 	// Defining states

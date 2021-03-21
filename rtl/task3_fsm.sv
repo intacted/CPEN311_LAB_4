@@ -1,11 +1,9 @@
 module task3_fsm
 				(
 					input clk, reset,
-               //input [7:0] secret_key[2:0],
                input logic [7:0] q,
 					
                output logic [7:0] iterator, 
-					//output logic [7:0] secret_key[2:0],
 					output logic [23:0] secret_key,
 					output logic [7:0] out_value,
 					output logic wren

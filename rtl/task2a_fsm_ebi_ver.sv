@@ -16,7 +16,7 @@
 // Changed Active LOW reset to Active HIGH reset
 //=====================================================================================
 
-module task2a_fsm_ebi_ver 
+module task2a_fsm
 						(	input clk, reset, start_FSM_1,
 							input [7:0] secret_key [2:0],
 							input [7:0] q,
