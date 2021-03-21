@@ -63,7 +63,8 @@ module task3_fsm
 		case(state)
 				START:
 				begin
-					next_state = ITERATE_KEY;
+					// Makes sure that all zeros is used as a key
+					next_state = WAIT_ITERATE;
 				end
 					
 				ITERATE_KEY:

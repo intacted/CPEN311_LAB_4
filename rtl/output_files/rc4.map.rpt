@@ -1,5 +1,5 @@
 Analysis & Synthesis report for rc4
-Sat Mar 20 16:55:30 2021
+Sat Mar 20 18:48:17 2021
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -68,7 +68,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sat Mar 20 16:55:30 2021      ;
+; Analysis & Synthesis Status     ; Successful - Sat Mar 20 18:48:17 2021      ;
 ; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
 ; Revision Name                   ; rc4                                        ;
 ; Top-level Entity Name           ; ksa                                        ;
@@ -261,11 +261,11 @@ agreement for further details.
 +---------------------------------------------+--------------------------+
 ; Estimate of Logic utilization (ALMs needed) ; 406                      ;
 ;                                             ;                          ;
-; Combinational ALUT usage for logic          ; 650                      ;
-;     -- 7 input functions                    ; 6                        ;
+; Combinational ALUT usage for logic          ; 651                      ;
+;     -- 7 input functions                    ; 5                        ;
 ;     -- 6 input functions                    ; 87                       ;
-;     -- 5 input functions                    ; 102                      ;
-;     -- 4 input functions                    ; 197                      ;
+;     -- 5 input functions                    ; 103                      ;
+;     -- 4 input functions                    ; 198                      ;
 ;     -- <=3 input functions                  ; 258                      ;
 ;                                             ;                          ;
 ; Dedicated logic registers                   ; 408                      ;
@@ -278,7 +278,7 @@ agreement for further details.
 ;                                             ;                          ;
 ; Maximum fan-out node                        ; altera_internal_jtag~TDO ;
 ; Maximum fan-out                             ; 268                      ;
-; Total fan-out                               ; 4610                     ;
+; Total fan-out                               ; 4613                     ;
 ; Average fan-out                             ; 3.76                     ;
 +---------------------------------------------+--------------------------+
 
@@ -288,7 +288,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                          ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                    ; Library Name ;
 +-----------------------------------------------------------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |ksa                                                                                                ; 650 (1)           ; 408 (0)      ; 2560              ; 0          ; 67   ; 0            ; |ksa                                                                                                                                                                                                                                                   ; work         ;
+; |ksa                                                                                                ; 651 (1)           ; 408 (0)      ; 2560              ; 0          ; 67   ; 0            ; |ksa                                                                                                                                                                                                                                                   ; work         ;
 ;    |SevenSegmentDisplayDecoder:sevenseg0|                                                           ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|SevenSegmentDisplayDecoder:sevenseg0                                                                                                                                                                                                              ; work         ;
 ;    |SevenSegmentDisplayDecoder:sevenseg1|                                                           ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|SevenSegmentDisplayDecoder:sevenseg1                                                                                                                                                                                                              ; work         ;
 ;    |SevenSegmentDisplayDecoder:sevenseg2|                                                           ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|SevenSegmentDisplayDecoder:sevenseg2                                                                                                                                                                                                              ; work         ;
@@ -307,7 +307,7 @@ agreement for further details.
 ;             |sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|                                          ; 144 (106)         ; 102 (73)     ; 0                 ; 0          ; 0    ; 0            ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub                                                         ; work         ;
 ;                |sld_rom_sr:hub_info_reg|                                                            ; 19 (19)           ; 10 (10)      ; 0                 ; 0          ; 0    ; 0            ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg                                 ; work         ;
 ;                |sld_shadow_jsm:shadow_jsm|                                                          ; 19 (19)           ; 19 (19)      ; 0                 ; 0          ; 0    ; 0            ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_shadow_jsm:shadow_jsm                               ; work         ;
-;    |task3_fsm:pass_through_values|                                                                  ; 421 (63)          ; 265 (31)     ; 512               ; 0          ; 0    ; 0            ; |ksa|task3_fsm:pass_through_values                                                                                                                                                                                                                     ; work         ;
+;    |task3_fsm:pass_through_values|                                                                  ; 422 (64)          ; 265 (31)     ; 512               ; 0          ; 0    ; 0            ; |ksa|task3_fsm:pass_through_values                                                                                                                                                                                                                     ; work         ;
 ;       |task2_fsm:decryption_module|                                                                 ; 358 (18)          ; 234 (0)      ; 512               ; 0          ; 0    ; 0            ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module                                                                                                                                                                                         ; work         ;
 ;          |task2a_fsm_ebi_ver:FSM_1|                                                                 ; 140 (66)          ; 81 (41)      ; 0                 ; 0          ; 0    ; 0            ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1                                                                                                                                                                ; work         ;
 ;             |lpm_divide:Mod0|                                                                       ; 38 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|lpm_divide:Mod0                                                                                                                                                ; work         ;
@@ -415,29 +415,28 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3]                                                                                                                      ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|decrypted_msg:RAM2|altsyncram:altsyncram_component|altsyncram_ik32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[3]                                                ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|decrypted_msg:RAM2|altsyncram:altsyncram_component|altsyncram_ik32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[0]                                     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|encrypted_msg:ROM|altsyncram:altsyncram_component|altsyncram_ckt1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[4]                                                 ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|encrypted_msg:ROM|altsyncram:altsyncram_component|altsyncram_ckt1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[0]                                                 ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|encrypted_msg:ROM|altsyncram:altsyncram_component|altsyncram_ckt1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3]                                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[0]                                                                                                                                 ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|decrypted_msg:RAM2|altsyncram:altsyncram_component|altsyncram_ik32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[0]                                                ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|encrypted_msg:ROM|altsyncram:altsyncram_component|altsyncram_ckt1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[0]                                                 ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|out_value[3]                                                                                                                                                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[1]                                                                                                                                 ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|decrypted_msg:RAM2|altsyncram:altsyncram_component|altsyncram_ik32:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[1]                                                ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|encrypted_msg:ROM|altsyncram:altsyncram_component|altsyncram_ckt1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[3]                                                 ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|out_value[6]                                                                                                                                                                   ;
 ; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[4]                                                                                  ;
-; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|decrypted_msg:RAM2|altsyncram:altsyncram_component|altsyncram_ik32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[2] ;
-; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|encrypted_msg:ROM|altsyncram:altsyncram_component|altsyncram_ckt1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[1]  ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|requested_iterator_main_loop[4]                                                                                                                                                ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|iterator_i[5]                                                                                                                                                                  ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|wait_count[0]                                                                                                                                                                  ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|wait_count[0]                                                                                                                                                                  ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|state[1]                                                                                                                                                                                                                            ;
-; 24:1               ; 4 bits    ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[0]                                                                                       ;
-; 24:1               ; 4 bits    ; 64 LEs        ; 48 LEs               ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|decrypted_msg:RAM2|altsyncram:altsyncram_component|altsyncram_ik32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[2]      ;
-; 24:1               ; 4 bits    ; 64 LEs        ; 52 LEs               ; 12 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|encrypted_msg:ROM|altsyncram:altsyncram_component|altsyncram_ckt1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[1]       ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|task2_swap_ij_fsm:swap_fsm2|iterator[6]                                                                                                                                        ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|task2_swap_ij_fsm:swap_fsm2|out_value[4]                                                                                                                                       ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|task2_swap_ij_fsm:swap_fsm3|iterator[0]                                                                                                                                        ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|decrypted_msg:RAM2|altsyncram:altsyncram_component|altsyncram_ik32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[3] ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|encrypted_msg:ROM|altsyncram:altsyncram_component|altsyncram_ckt1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[2]  ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|requested_iterator_main_loop[1]                                                                                                                                                ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|iterator_i[6]                                                                                                                                                                  ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|wait_count[1]                                                                                                                                                                  ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|wait_count[1]                                                                                                                                                                  ;
+; 24:1               ; 4 bits    ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |ksa|s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[1]                                                                                       ;
+; 24:1               ; 4 bits    ; 64 LEs        ; 48 LEs               ; 16 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|decrypted_msg:RAM2|altsyncram:altsyncram_component|altsyncram_ik32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[3]      ;
+; 24:1               ; 4 bits    ; 64 LEs        ; 52 LEs               ; 12 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|encrypted_msg:ROM|altsyncram:altsyncram_component|altsyncram_ckt1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[0]       ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|task2_swap_ij_fsm:swap_fsm2|iterator[3]                                                                                                                                        ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|task2_swap_ij_fsm:swap_fsm2|out_value[1]                                                                                                                                       ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|task2_swap_ij_fsm:swap_fsm3|iterator[3]                                                                                                                                        ;
 ; 12:1               ; 8 bits    ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2b_fsm_ebi_ver:FSM_2|task2_swap_ij_fsm:swap_fsm3|out_value[5]                                                                                                                                       ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|Mux6                                                                                                                                                                           ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|iterator[5]                                                                                                                                                                                             ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1|Mux7                                                                                                                                                                           ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |ksa|task3_fsm:pass_through_values|task2_fsm:decryption_module|iterator[1]                                                                                                                                                                                             ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|hub_minor_ver_reg[0]                                                    ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|hub_minor_ver_reg[3]                                                    ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |ksa|sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:instrumentation_fabric|alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|mixer_addr_reg_internal[0]                                              ;
@@ -841,22 +840,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA CLR SCLR SLD  ; 48                          ;
 ;     ENA CLR SLD       ; 8                           ;
 ;     ENA SLD           ; 24                          ;
-; arriav_lcell_comb     ; 510                         ;
+; arriav_lcell_comb     ; 511                         ;
 ;     arith             ; 99                          ;
 ;         0 data inputs ; 7                           ;
 ;         1 data inputs ; 63                          ;
 ;         2 data inputs ; 17                          ;
 ;         3 data inputs ; 7                           ;
 ;         4 data inputs ; 5                           ;
-;     extend            ; 4                           ;
-;         7 data inputs ; 4                           ;
-;     normal            ; 399                         ;
+;     extend            ; 3                           ;
+;         7 data inputs ; 3                           ;
+;     normal            ; 401                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 8                           ;
-;         2 data inputs ; 48                          ;
-;         3 data inputs ; 27                          ;
-;         4 data inputs ; 175                         ;
-;         5 data inputs ; 78                          ;
+;         2 data inputs ; 47                          ;
+;         3 data inputs ; 28                          ;
+;         4 data inputs ; 176                         ;
+;         5 data inputs ; 79                          ;
 ;         6 data inputs ; 62                          ;
 ;     shared            ; 8                           ;
 ;         3 data inputs ; 8                           ;
@@ -913,7 +912,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Sat Mar 20 16:55:10 2021
+    Info: Processing started: Sat Mar 20 18:47:55 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off rc4 -c rc4
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file ksa.sv
@@ -985,7 +984,7 @@ Info (12133): Instantiated megafunction "s_memory:output_to_S|altsyncram:altsync
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter"
 Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "s_memory:output_to_S|altsyncram:altsyncram_component|altsyncram_2d32:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr"
 Info (12128): Elaborating entity "task3_fsm" for hierarchy "task3_fsm:pass_through_values"
-Warning (10230): Verilog HDL assignment warning at task3_fsm.sv(132): truncated value with size 32 to match size of target (24)
+Warning (10230): Verilog HDL assignment warning at task3_fsm.sv(133): truncated value with size 32 to match size of target (24)
 Info (12128): Elaborating entity "task2_fsm" for hierarchy "task3_fsm:pass_through_values|task2_fsm:decryption_module"
 Info (12128): Elaborating entity "task2a_fsm_ebi_ver" for hierarchy "task3_fsm:pass_through_values|task2_fsm:decryption_module|task2a_fsm_ebi_ver:FSM_1"
 Warning (10230): Verilog HDL assignment warning at task2a_fsm_ebi_ver.sv(284): truncated value with size 32 to match size of target (8)
@@ -1123,18 +1122,18 @@ Info (144001): Generated suppressed messages file E:/Courses/CPEN311/Ebi/Labs/CP
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (15752): Ignored 12 Virtual Pin logic option assignments
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[5]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_RS".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_ON".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[3]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_RW".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[7]".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_EN".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[0]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[3]".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[6]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[1]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[2]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_RS".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[0]".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[4]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_ON".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[2]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_RW".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[1]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[5]".
 Warning (21074): Design contains 13 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[0]"
     Warning (15610): No output dependent on input pin "KEY[1]"
@@ -1149,16 +1148,16 @@ Warning (21074): Design contains 13 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 841 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 842 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 53 output pins
-    Info (21061): Implemented 745 logic cells
+    Info (21061): Implemented 746 logic cells
     Info (21064): Implemented 24 RAM segments
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 51 warnings
-    Info: Peak virtual memory: 4961 megabytes
-    Info: Processing ended: Sat Mar 20 16:55:30 2021
-    Info: Elapsed time: 00:00:20
-    Info: Total CPU time (on all processors): 00:00:47
+    Info: Peak virtual memory: 4964 megabytes
+    Info: Processing ended: Sat Mar 20 18:48:18 2021
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:01:07
 
 
 +------------------------------------------+
