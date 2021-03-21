@@ -919,12 +919,11 @@ set_global_assignment -name SYSTEMVERILOG_FILE task1_fsm.sv
 set_global_assignment -name SYSTEMVERILOG_FILE task2_fsm.sv
 set_global_assignment -name CDF_FILE output_files/Chain1.cdf
 set_global_assignment -name SYSTEMVERILOG_FILE task2_swap_ij_fsm.sv
-set_global_assignment -name SYSTEMVERILOG_FILE task2_fsm_ebi_ver.sv
 set_global_assignment -name SYSTEMVERILOG_FILE multiplexer.sv
 set_global_assignment -name QIP_FILE decrypted_msg.qip
 set_global_assignment -name QIP_FILE encrypted_msg.qip
-set_global_assignment -name SYSTEMVERILOG_FILE Task2b_fsm.sv
 set_global_assignment -name SYSTEMVERILOG_FILE task2a_fsm.sv
-set_global_assignment -name SYSTEMVERILOG_FILE task2b_fsm_ebi_ver.sv
 set_global_assignment -name SYSTEMVERILOG_FILE task2a_fsm_ebi_ver.sv
+set_global_assignment -name SYSTEMVERILOG_FILE task3_fsm.sv
+set_global_assignment -name SYSTEMVERILOG_FILE task2b_fsm_crack.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

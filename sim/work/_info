@@ -9,13 +9,13 @@ z2
 cModel Technology
 dE:/Courses/CPEN311/Ebi/Labs/Lab4 myself
 vdecrypted_msg
-Z0 !s110 1616187080
+Z0 !s110 1616283151
 !i10b 1
 !s100 ]<G^l26KKnNmz=nX0adO13
 IcgbDLlJCkHVn4b4o5DM2H2
 Z1 V`JN@9S9cnhjKRR_L]QIcM3
 Z2 dE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim
-Z3 w1616131572
+Z3 w1616199268
 Z4 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v
 Z5 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v
 L0 24
@@ -23,7 +23,7 @@ Z6 OV;L;10.3c;59
 r1
 !s85 0
 31
-Z7 !s108 1616187080.217000
+Z7 !s108 1616283151.935000
 Z8 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v|
 Z9 !s90 -reportprogress|300|-work|work|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v|
 !i113 1
@@ -31,8 +31,8 @@ Z10 o-work work
 vencrypted_msg
 R0
 !i10b 1
-!s100 P<PFN0mZ4a6[>UBngo:dz1
-I9V08^3IlJoFCW6;17SY>51
+!s100 icjM@PLJ2H^ZPM:N^BB5n3
+INQViYNB;dWUjg3?0TfDiU3
 R1
 R2
 R3
@@ -50,50 +50,50 @@ R9
 R10
 vmux4_binary_select
 Z11 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
-R0
+Z12 !s110 1616283152
 !i10b 1
 !s100 7Bj4zbnTU9=Qzo0M`]@m03
 I:zcPbK]9eDWWnHeTflKbI0
 R1
-Z12 !s105 multiplexer_sv_unit
+Z13 !s105 multiplexer_sv_unit
 S1
 R2
-R3
-Z13 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv
-Z14 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv
+Z14 w1616131572
+Z15 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv
+Z16 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv
 L0 6
 R6
 r1
 !s85 0
 31
-Z15 !s108 1616187080.291000
-Z16 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv|
-Z17 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv|
+Z17 !s108 1616283152.008000
+Z18 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv|
+Z19 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv|
 !i113 1
-Z18 o-work work -sv
+Z20 o-work work -sv
 vmux_one_hot_select
 R11
-R0
+R12
 !i10b 1
 !s100 _G<U4gTlhL>ej=W@PzMfh1
 ID7iCm5bV9z6Alh2aX;19e0
 R1
-R12
+R13
 S1
 R2
-R3
-R13
 R14
+R15
+R16
 L0 27
 R6
 r1
 !s85 0
 31
-R15
-R16
 R17
-!i113 1
 R18
+R19
+!i113 1
+R20
 vRAM
 R0
 !i10b 1
@@ -136,7 +136,7 @@ r1
 !i113 1
 R10
 vSevenSegmentDisplayDecoder
-Z19 !s110 1616187079
+R0
 !i10b 1
 !s100 04cdEA1ld]g_`l4zO2j1S0
 I_ceQI>2M@]KGkCcIRDI@M2
@@ -150,7 +150,7 @@ R6
 r1
 !s85 0
 31
-!s108 1616187079.795000
+!s108 1616283151.522000
 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/SevenSegmentDisplayDecoder.v|
 !s90 -reportprogress|300|-work|work|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/SevenSegmentDisplayDecoder.v|
 !i113 1
@@ -158,7 +158,7 @@ R10
 n@seven@segment@display@decoder
 vtask1_fsm
 R11
-R19
+R0
 !i10b 1
 !s100 :Ja6A1N]YXE2Z2oj0[`_`3
 I@1Ic8bBQ67D=<iGC>h]mR2
@@ -169,27 +169,27 @@ R2
 w1615361724
 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task1_fsm.sv
 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task1_fsm.sv
-Z20 L0 19
+Z21 L0 19
 R6
 r1
 !s85 0
 31
-!s108 1616187079.862000
+!s108 1616283151.585000
 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task1_fsm.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task1_fsm.sv|
 !i113 1
-R18
+R20
 vtask2_fsm
 R11
-R19
+R0
 !i10b 1
-!s100 B7>3`0fS:0fa=4Y0B=FZR2
-I^en[iSnaW^<O:IDc3FSUl1
+!s100 ?@73J1febM4<z@SQ[KF@>1
+I>[_JzDUmbd3aZAc;Z`m1X0
 R1
 !s105 task2_fsm_sv_unit
 S1
 R2
-w1616186229
+w1616280139
 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm.sv
 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm.sv
 L0 1
@@ -197,22 +197,22 @@ R6
 r1
 !s85 0
 31
-!s108 1616187079.936000
+!s108 1616283151.656000
 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm.sv|
 !i113 1
-R18
+R20
 vtask2_fsm_ebi_ver
 R11
 R0
 !i10b 1
-!s100 oXS^J?EZV9GmJ4k:<kV3n3
-I1?@MZ`h05j61A0K7:8ggd2
+!s100 c0TK2FMLA@@4^@`hQF:ko0
+I7BWCEK9zGnYSaSi`GZf_T1
 R1
 !s105 task2_fsm_ebi_ver_sv_unit
 S1
 R2
-w1616181711
+w1616272172
 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_ebi_ver.sv
 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_ebi_ver.sv
 L0 1
@@ -220,34 +220,34 @@ R6
 r1
 !s85 0
 31
-!s108 1616187080.002000
+!s108 1616283151.728000
 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_ebi_ver.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_ebi_ver.sv|
 !i113 1
-R18
+R20
 vtask2_swap_ij_fsm
 R11
 R0
 !i10b 1
-!s100 jIUcF[69R1^Rg23EH<O[C0
-I?FMRmPV91hG?:_7ozoX:83
+!s100 RzR3<<B<Ocl;kDW<Mf;0W0
+I9N=>[=F561^5RARj@iE8U0
 R1
 !s105 task2_swap_ij_fsm_sv_unit
 S1
 R2
-R3
+w1616263296
 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_swap_ij_fsm.sv
 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_swap_ij_fsm.sv
-R20
+R21
 R6
 r1
 !s85 0
 31
-!s108 1616187080.144000
+!s108 1616283151.864000
 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_swap_ij_fsm.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_swap_ij_fsm.sv|
 !i113 1
-R18
+R20
 vtask2_swap_ij_fsm_TB
 R11
 !s110 1615929359
@@ -255,7 +255,7 @@ R11
 !s100 5[5ZI1mDE=fYk_njffRGZ0
 IbY?aEWA4TXe@meHo`>IKb2
 R1
-Z21 !s105 task2_TB_sv_unit
+Z22 !s105 task2_TB_sv_unit
 S1
 R2
 w1615929357
@@ -270,19 +270,19 @@ r1
 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task2_TB.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task2_TB.sv|
 !i113 1
-R18
+R20
 ntask2_swap_ij_fsm_@t@b
 vtask2_TB
 R11
-R19
+R0
 !i10b 1
-!s100 dW[@cLMPB;JXn[bj6>ain2
-IjO0:I6Mc2@@aM3>MALdaU0
+!s100 K1nAM<lO0h1V;Yh9g^^jH0
+IkCM]oH8zDlm`Tz6mfJTEm2
 R1
-R21
+R22
 S1
 R2
-w1616187074
+w1616190799
 8E:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\sim\task2_TB.sv
 FE:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\sim\task2_TB.sv
 L0 3
@@ -290,15 +290,15 @@ R6
 r1
 !s85 0
 31
-!s108 1616187079.720000
+!s108 1616283151.449000
 !s107 E:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\sim\task2_TB.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\sim\task2_TB.sv|
 !i113 1
-R18
+R20
 ntask2_@t@b
 vtask2a_fsm
 R11
-R0
+Z23 !s110 1616283153
 !i10b 1
 !s100 oz[AbkQ0z9oN02kLgPedJ3
 IS`1O36RSJHWW_>m;aFG0l2
@@ -306,45 +306,45 @@ R1
 !s105 task2a_fsm_sv_unit
 S1
 R2
-w1616186236
+w1616187373
 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2a_fsm.sv
 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2a_fsm.sv
-R20
+R21
 R6
 r1
 !s85 0
 31
-!s108 1616187080.438000
+!s108 1616283153.461000
 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2a_fsm.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2a_fsm.sv|
 !i113 1
-R18
+R20
 vtask2a_fsm_ebi_ver
 R11
-R0
+R23
 !i10b 1
-!s100 ^?RgR_@MJ[cD1FM_]Iazb3
-I=7QJU:TQ7nn8fnRjN:Eci2
+!s100 CS40`>MQOJ:O>ZRlLa4bz3
+IBU8W9lMKCn5>nAfW<99a_2
 R1
 !s105 task2a_fsm_ebi_ver_sv_unit
 S1
 R2
-w1616182623
+w1616276656
 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2a_fsm_ebi_ver.sv
 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2a_fsm_ebi_ver.sv
-R20
+R21
 R6
 r1
 !s85 0
 31
-!s108 1616187080.536000
+!s108 1616283153.531000
 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2a_fsm_ebi_ver.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2a_fsm_ebi_ver.sv|
 !i113 1
-R18
+R20
 vtask2b
 R11
-R0
+!s110 1616264054
 !i10b 1
 !s100 GP]I?Ea`SYbBORk5Af4Kc2
 I_jgnCO2>PGXO5zbPA9TP;0
@@ -352,7 +352,7 @@ R1
 !s105 Task2b_fsm_sv_unit
 S1
 R2
-w1616186220
+w1616187358
 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/Task2b_fsm.sv
 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/Task2b_fsm.sv
 L0 1
@@ -360,54 +360,124 @@ R6
 r1
 !s85 0
 31
-!s108 1616187080.614000
+!s108 1616264054.897000
 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/Task2b_fsm.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/Task2b_fsm.sv|
 !i113 1
-R18
-vtask2b_fsm_ebi_ver
+R20
+vtask2b_fsm_crack
 R11
-R0
+!s110 1616279378
 !i10b 1
-!s100 gL@6Rj`4jgKoAbAVnV00W2
-IV2R40:gA>IGHUl5KHWm4k2
+!s100 @_BX;I;z5NoUIkP>Gk8>X2
+IjF6Cj>2R4R?MIQIh28]Zl3
 R1
-!s105 task2b_fsm_ebi_ver_sv_unit
+Z24 !s105 task2b_fsm_crack_sv_unit
 S1
 R2
-w1616186056
-8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_ebi_ver.sv
-FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_ebi_ver.sv
-R20
+w1616276917
+Z25 8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_crack.sv
+Z26 FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_crack.sv
+R21
 R6
 r1
 !s85 0
 31
-!s108 1616187080.367000
-!s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_ebi_ver.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_ebi_ver.sv|
+!s108 1616279378.247000
+Z27 !s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_crack.sv|
+Z28 !s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_crack.sv|
 !i113 1
-R18
+R20
+vtask2b_fsm_ebi_ver
+R11
+R23
+!i10b 1
+!s100 _5RA:GAl^:zh?oD[R8e`e3
+I:BETLf?[1lQoZzQCfJ9gO2
+R1
+R24
+S1
+R2
+w1616281904
+R25
+R26
+R21
+R6
+r1
+!s85 0
+31
+!s108 1616283153.604000
+R27
+R28
+!i113 1
+R20
+vtask3_fsm
+R11
+R23
+!i10b 1
+!s100 @R=8mLSbPLhoC=<Rj^2Ff3
+I^P_JBOV8WmLzaXoEi8QX>3
+R1
+!s105 task3_fsm_sv_unit
+S1
+R2
+w1616283142
+8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task3_fsm.sv
+FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task3_fsm.sv
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1616283153.676000
+!s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task3_fsm.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task3_fsm.sv|
+!i113 1
+R20
+vtask3_TB
+R11
+R23
+!i10b 1
+!s100 cFPaPD2S>llW8=<onUOiB2
+I;=Y]@5Ab[6LHZ@]lU?lPW2
+R1
+!s105 task3_TB_sv_unit
+S1
+R2
+w1616277462
+8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task3_TB.sv
+FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task3_TB.sv
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1616283153.751000
+!s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task3_TB.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task3_TB.sv|
+!i113 1
+R20
+ntask3_@t@b
 vtb_task2
 R11
 R0
 !i10b 1
 !s100 ngm_le]MQCTFWB3[X5N6_3
-IULNkgbcg`[6OzmC><9m>I0
+ICPFjd2B=?TzS2zRHXJBX=3
 R1
 !s105 task2_fsm_tb_sv_unit
 S1
 R2
-R3
-8E:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\rtl\task2_fsm_tb.sv
-FE:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\rtl\task2_fsm_tb.sv
+R14
+8E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_tb.sv
+FE:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_tb.sv
 L0 4
 R6
 r1
 !s85 0
 31
-!s108 1616187080.074000
-!s107 E:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\rtl\task2_fsm_tb.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|E:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\rtl\task2_fsm_tb.sv|
+!s108 1616283151.798000
+!s107 E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_tb.sv|
 !i113 1
-R18
+R20

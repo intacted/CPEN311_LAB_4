@@ -17,7 +17,7 @@
 //=====================================================================================
 
 module task2a_fsm_ebi_ver 
-						(	input clk, reset,
+						(	input clk, reset, start_FSM_1,
 							input [7:0] secret_key [2:0],
 							input [7:0] q,
 							
@@ -33,24 +33,15 @@ module task2a_fsm_ebi_ver
 	parameter KEY_LENGTH = 3;
 	
 	wire [7:0] mods;
-	assign mods = secret_key[iterator_i%KEY_LENGTH]; // secret_key[i mod keylength]
+	assign mods = secret_key[iterator_i%KEY_LENGTH]; 
 	
 	// Iterator selection
 	logic [7:0] requested_iterator_main_loop;
-	logic request_iterator_main_loop_flag;
-	
 	logic [7:0] requested_iterator_loop_2;
-	logic request_iterator_loop_2_flag; 
 	
-	mux_one_hot_select #(/*BIT_WIDTH*/ 8, /*INPUT_NUMBER*/ 2) iterator_selector
-	(	// Inputs
-		.select({request_iterator_loop_2_flag, request_iterator_main_loop_flag}),
-		.a('{requested_iterator_loop_2,requested_iterator_main_loop}),
-		
-		// Outputs 
-		.out(iterator)
-	);
+	logic select_swap_iterator;
 	
+	assign iterator = select_swap_iterator ? requested_iterator_loop_2 : requested_iterator_main_loop;
 	
 	// LOOP 2 WIRES & REGS:
 	logic request_to_write_loop_2;
@@ -100,7 +91,7 @@ task2_swap_ij_fsm swap_fsm2
 				// Loop 1
 				START: 
 				begin
-					next_state = INITIALIZE_S_ARRAY;
+					next_state = start_FSM_1 ? INITIALIZE_S_ARRAY : START;
 				end 
 				
 				INITIALIZE_S_ARRAY: 
@@ -142,7 +133,6 @@ task2_swap_ij_fsm swap_fsm2
 				COMPLETED_LOOP_2: 
 				begin
 					next_state = COMPLETED_LOOP_2;
-					//next_state = ITERATE_LOOP_3;
 				end 
 				
 			default: next_state = START;
@@ -213,13 +203,12 @@ task2_swap_ij_fsm swap_fsm2
 		if(reset)
 		begin
 			state <= START;
-			//iterator <= 8'h00;
+			
 			requested_iterator_main_loop <= 8'h00;
 			iterator_i <= 8'h00;
 			iterator_j <= 8'h00;
-			
-			request_iterator_main_loop_flag <= 1'b0;
-			request_iterator_loop_2_flag <= 1'b0; 
+					
+			select_swap_iterator <= 1'b0;
 			
 			out_value <= 8'h00;
 						
@@ -232,14 +221,12 @@ task2_swap_ij_fsm swap_fsm2
 			case(state)
 				START:
 				begin
-					//iterator <= 8'h00;
 					requested_iterator_main_loop <= 8'h00;
 					iterator_i <= 8'h00;
 					iterator_j <= 8'h00;
 					
-					request_iterator_main_loop_flag <= 1'b0;
-					request_iterator_loop_2_flag <= 1'b0; 
-					
+					select_swap_iterator <= 1'b0;
+
 					
 					out_value <= 8'h00;
 					
@@ -256,7 +243,7 @@ task2_swap_ij_fsm swap_fsm2
 				begin
 					iterator_i <= iterator_i + 8'h01;
 					requested_iterator_main_loop <= iterator_i;
-					request_iterator_main_loop_flag <= 1'b1;
+					select_swap_iterator <= 1'b0;
 					out_value <= iterator_i;
 					
 					wait_count <= 2'b0;				// only needed for final step
@@ -267,7 +254,7 @@ task2_swap_ij_fsm swap_fsm2
 					iterator_i <= 8'h00;
 					out_value <= iterator_i;
 					requested_iterator_main_loop <= iterator_i;
-					request_iterator_main_loop_flag <= 1'b1;
+					select_swap_iterator <= 1'b0;
 					
 					// maybe add first stage of iterate key
 					wait_count <= wait_count + 2'b01;
@@ -278,9 +265,8 @@ task2_swap_ij_fsm swap_fsm2
 					iterator_i <= iterator_i + 8'h01;
 					requested_iterator_main_loop <= iterator_i;
 					
-					request_iterator_main_loop_flag <= 1'b1;
-					request_iterator_loop_2_flag <= 1'b0; 
-					
+					select_swap_iterator <= 1'b0;
+
 					wait_count <= 2'b0;
 				end
 				
@@ -288,9 +274,8 @@ task2_swap_ij_fsm swap_fsm2
 				begin
 					requested_iterator_main_loop <= iterator_i;
 					
-					request_iterator_main_loop_flag <= 1'b1;
-					request_iterator_loop_2_flag <= 1'b0; 
-					
+					select_swap_iterator <= 1'b0;
+	
 					wait_count <= wait_count + 2'b01;
 				end
 				
@@ -299,9 +284,8 @@ task2_swap_ij_fsm swap_fsm2
 					iterator_j = (iterator_j + q + mods) % 256;	//(secret_key % KEY_LENGTH); // can also be implemented with shift //&?&
 					requested_iterator_main_loop <= iterator_i;
 					
-					request_iterator_main_loop_flag <= 1'b1;
-					request_iterator_loop_2_flag <= 1'b0; 
-					
+					select_swap_iterator <= 1'b0;
+
 					start_swap <= 1'b0;
 					
 					wait_count <= 2'b0;
@@ -309,17 +293,15 @@ task2_swap_ij_fsm swap_fsm2
 				
 				WAIT_FOR_J_LOOP_2:
 				begin
-					request_iterator_main_loop_flag <= 1'b0;
-					request_iterator_loop_2_flag <= 1'b1; 
-					
+					select_swap_iterator <= 1'b1;
+
 					wait_count <= wait_count + 1;
 				end
 				
 				SWAP_IJ_LOOP_2:
 				begin
-					//iterator <= requested_iterator_loop_2;				// MUX use assign
-					request_iterator_loop_2_flag <= 1'b1; 
-					
+					select_swap_iterator <= 1'b1;
+
 					out_value <= requested_out_value_loop_2;
 					
 					start_swap <= 1'b1;

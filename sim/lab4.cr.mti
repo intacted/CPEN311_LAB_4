@@ -5,6 +5,13 @@ Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 Top level modules:
 	task2_fsm
 
+} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task3_TB.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task3_TB.sv
+Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
+-- Compiling module task3_TB
+
+Top level modules:
+	task3_TB
+
 } {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv
 Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 -- Compiling module mux4_binary_select
@@ -13,13 +20,6 @@ Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 Top level modules:
 	mux4_binary_select
 	mux_one_hot_select
-
-} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/Task2b_fsm.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/Task2b_fsm.sv
-Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
--- Compiling module task2b
-
-Top level modules:
-	task2b
 
 } {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2a_fsm_ebi_ver.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2a_fsm_ebi_ver.sv
 Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
@@ -35,7 +35,7 @@ Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 Top level modules:
 	task2_swap_ij_fsm
 
-} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_tb.sv {1 {vlog -work work -sv -stats=none {E:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\rtl\task2_fsm_tb.sv}
+} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_tb.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm_tb.sv
 Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 -- Compiling module tb_task2
 
@@ -56,13 +56,11 @@ Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 Top level modules:
 	task2a_fsm
 
-} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v {2 {vlog -work work -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v
+} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v {1 {vlog -work work -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v
 Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 -- Compiling module RAM
 -- Compiling module decrypted_msg
 -- Compiling module encrypted_msg
-** Warning: E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v(57): (vlog-LRM-2260) SystemVerilog feature "reg" encountered in Verilog context.
-
 
 Top level modules:
 	RAM
@@ -82,6 +80,13 @@ Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 
 Top level modules:
 	SevenSegmentDisplayDecoder
+
+} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_crack.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_crack.sv
+Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
+-- Compiling module task2b_fsm_ebi_ver
+
+Top level modules:
+	task2b_fsm_ebi_ver
 
 } {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_ebi_ver.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2b_fsm_ebi_ver.sv
 Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014

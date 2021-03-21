@@ -18,7 +18,6 @@
 
 module task2b_fsm_ebi_ver 
 						(	input clk, reset,
-							input [7:0] secret_key [2:0],
 							input [7:0] q,
 							input finish_FSM_1,
 							
@@ -33,8 +32,8 @@ module task2b_fsm_ebi_ver
 	parameter KEY_LENGTH = 3;
 	
 	// RAM and ROM
-	logic [7:0] f; 
-	assign f = saved_value_i + saved_value_j;
+	logic [7:0] f, f_iterator; 
+	assign f_iterator = saved_value_i + saved_value_j;
 	
 	logic [7:0] data_d, q_m;
 	logic wren_d;
@@ -72,6 +71,7 @@ task2_swap_ij_fsm swap_fsm3
 							.wren(wren),
 							.fsm_finished(finished_swap)
 						);
+						
 	
 	// Defining states
 	enum int unsigned { 
@@ -119,12 +119,12 @@ task2_swap_ij_fsm swap_fsm3
 				
 				SWAP_IJ: 
 				begin
-					next_state = finished_swap ? RETRIEVE_K : SWAP_IJ; // FIX THIS
+					next_state = finished_swap ? RETRIEVE_K : SWAP_IJ; 
 				end 
 				
 				RETRIEVE_K: 
 				begin
-					next_state = OUTPUT_K;
+					next_state = (wait_count === WAIT_STATE_AMOUNT) ? OUTPUT_K : RETRIEVE_K;
 				end 
 				
 				OUTPUT_K:
@@ -157,6 +157,8 @@ task2_swap_ij_fsm swap_fsm3
 			iterator_j <= 8'h00;
 			
 			select_swap_iterator <= 1'b0;
+			
+			data_d <= 8'h00;
 		end
 		
 		// If not resetting, normal operation
@@ -178,6 +180,8 @@ task2_swap_ij_fsm swap_fsm3
 								
 					// Make sure the swap-ij is on stand-by
 					start_swap <= 1'b0;
+					
+					data_d <= 8'h00;
 				end
 				
 				ITERATE_I:
@@ -192,6 +196,7 @@ task2_swap_ij_fsm swap_fsm3
 				
 				WAIT_FOR_I:
 				begin
+					requested_iterator_main_loop <= iterator_i;
 					wait_count <= wait_count + 2'b01;
 				end
 				
@@ -216,26 +221,39 @@ task2_swap_ij_fsm swap_fsm3
 					select_swap_iterator <= 1'b1;
 					
 					start_swap <= 1'b1;
+					
+					wait_count <= 2'b0;
 				end
 				
 				RETRIEVE_K:
 				begin
+					requested_iterator_main_loop <= f_iterator;
+					
 					select_swap_iterator <= 1'b0;
 					
-					start_swap <= 1'b0;
+					start_swap <= 1'b1;
 					
 					wren_d <= 1'b0;
+					
+					wait_count <= wait_count + 2'b01;
 				end
 				
 				OUTPUT_K:
 				begin
+					start_swap <= 1'b1;
+					
 					wren_d <= 1'b1;
-					data_d <= f ^ q_m;
+					
+					data_d <= q ^ q_m;
 				end
 
 				ITERATE_K:
 				begin
 					iterator_k <= iterator_k + 1;
+					
+					start_swap <= 1'b0;
+					
+					wren_d <= 1'b0;						// double check this
 				end
 				
 				COMPLETED_DECRYPTION:

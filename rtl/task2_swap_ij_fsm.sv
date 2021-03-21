@@ -161,7 +161,7 @@ module task2_swap_ij_fsm
 				
 				COPY_I:
 				begin
-					saved_value_i <= q;
+					//saved_value_i <= q;
 					iterator <= iterator_i;
 					wren <= 0;
 					//rden <= 1;
@@ -169,6 +169,7 @@ module task2_swap_ij_fsm
 				end
 				WAIT_COPY_I:
 				begin
+					saved_value_i <= q;
 					iterator <= iterator_i;    // may be redundant
 					saved_value_i <= q;			// may be redundant
 					wait_count <= 2'b0;
@@ -176,7 +177,7 @@ module task2_swap_ij_fsm
 
 				COPY_J:
 				begin
-					saved_value_j <= q;
+					//saved_value_j <= q;
 					iterator <= iterator_j;
 					wren <= 0;
 					//rden <= 1;
@@ -184,6 +185,7 @@ module task2_swap_ij_fsm
 				end
 				WAIT_COPY_J:
 				begin
+					saved_value_j <= q;
 					iterator <= iterator_j;    // may be redundant
 					saved_value_j <= q;			// may be redundant
 					wait_count <= 2'b0;
