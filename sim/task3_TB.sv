@@ -6,6 +6,8 @@ module task3_TB;
     //logic [9:0] secret_key;
     logic [7:0] q;//, iterator_i, iterator_j;
 
+	logic [1:0] completion_status;
+
     logic [7:0] iterator, out_value;
     logic wren;
 
@@ -26,6 +28,7 @@ module task3_TB;
 		.iterator(iterator),
 		.secret_key(secret_key),
 		.out_value(out_value),
+		.status(completion_status),
 		.wren(wren)
 	);
 

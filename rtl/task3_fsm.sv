@@ -141,7 +141,6 @@ module task3_fsm
 				
 				FINISH:
 				begin
-					// No further steps are necessary 
 					if (failed_decrypt)
 						status <= 2'b01;	// failed
 					else

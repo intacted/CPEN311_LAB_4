@@ -26,20 +26,25 @@ module ksa(
    assign clk = CLOCK_50;
    assign reset_n = KEY[3];
 	
-	/*
+	
 	// TASK 3 WITH BONUS CODE
 	logic [23:0] secret_key;
+	logic [5:0] completion_status;
 	
-	task3_fsm pass_through_values(
+	task3_bonus_fsm pass_through_values(
 		// Inputs
 		.clk(clk),
 		.reset(!reset_n),
 		
 		// Outputs
-		.secret_key(secret_key)
+		.HEX_LED_VALUE(secret_key),
+		.status(completion_status)
 	);
-	*/
+
+	assign LEDR[5:0] = completion_status;
 	
+	
+	/*
 	// TASK 3 CODE
 	logic [7:0] iterator, q;
 	logic [7:0] out_value;
@@ -72,6 +77,7 @@ module ksa(
 	);
 	
 	assign LEDR[1:0] = completion_status;
+	*/
 	
 	/*
 	// TASK 2 CODE

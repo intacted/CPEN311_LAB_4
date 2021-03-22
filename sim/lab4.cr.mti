@@ -1,16 +1,16 @@
-E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm.sv
-Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
--- Compiling module task2_fsm
-
-Top level modules:
-	task2_fsm
-
-} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task3_TB.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task3_TB.sv
+E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task3_TB.sv {1 {vlog -work work -sv -stats=none {E:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\sim\task3_TB.sv}
 Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 -- Compiling module task3_TB
 
 Top level modules:
 	task3_TB
+
+} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task2_fsm.sv
+Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
+-- Compiling module task2_fsm
+
+Top level modules:
+	task2_fsm
 
 } {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/multiplexer.sv
 Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
@@ -42,6 +42,13 @@ Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 Top level modules:
 	tb_task2
 
+} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task3_bonus_fsm.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task3_bonus_fsm.sv
+Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
+-- Compiling module task3_bonus_fsm
+
+Top level modules:
+	task3_bonus_fsm
+
 } {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task1_fsm.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/rtl/task1_fsm.sv
 Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 -- Compiling module task1_fsm
@@ -59,11 +66,13 @@ Top level modules:
 } {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v {1 {vlog -work work -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/RAM.v
 Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 -- Compiling module RAM
+-- Compiling module s_memory
 -- Compiling module decrypted_msg
 -- Compiling module encrypted_msg
 
 Top level modules:
 	RAM
+	s_memory
 	decrypted_msg
 	encrypted_msg
 
@@ -88,7 +97,14 @@ Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 Top level modules:
 	task2b_fsm
 
-} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task2_TB.sv {1 {vlog -work work -sv -stats=none {E:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\sim\task2_TB.sv}
+} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task3_bonus_TB.sv {1 {vlog -work work -sv -stats=none {E:\Courses\CPEN311\Ebi\Labs\CPEN311_LAB_4\sim\task3_bonus_TB.sv}
+Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
+-- Compiling module task3_bonus_TB
+
+Top level modules:
+	task3_bonus_TB
+
+} {} {}} E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task2_TB.sv {1 {vlog -work work -sv -stats=none E:/Courses/CPEN311/Ebi/Labs/CPEN311_LAB_4/sim/task2_TB.sv
 Model Technology ModelSim ALTERA vlog 10.3c Compiler 2014.09 Sep 20 2014
 -- Compiling module task2_TB
 
