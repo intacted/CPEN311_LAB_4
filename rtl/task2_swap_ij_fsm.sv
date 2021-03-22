@@ -34,18 +34,18 @@ module task2_swap_ij_fsm
 	// Defining states
 	enum int unsigned { 
 		IDLE = 0, 
-		COPY_I = 1,
-		COPY_J = 2,
-		SWAP_I= 3,
-		SWAP_J = 4,
-		FINISH = 5,
+		START = 1,
+		COPY_I = 2,
+		COPY_J = 3,
+		SWAP_I= 4,
+		SWAP_J = 5,
+		FINISH = 6,
 
-		START = 11,
-		WAIT_START = 6,
-		WAIT_COPY_I = 7,
-		WAIT_COPY_J = 8,
-		WAIT_SWAP_I = 9,
-		WAIT_SWAP_J = 10			
+		WAIT_START = 7,
+		WAIT_COPY_I = 8,
+		WAIT_COPY_J = 9,
+		WAIT_SWAP_I = 10,
+		WAIT_SWAP_J = 11			
 	} state, next_state;		
 	
 	// Defining next_state order
@@ -125,7 +125,7 @@ module task2_swap_ij_fsm
 
 			fsm_finished <= 0;
 			wren <= 0;
-			//rden <= 0;
+
 			wait_count <= 2'b0;
 			
 			iterator <= 8'h00;
@@ -143,7 +143,7 @@ module task2_swap_ij_fsm
 
 					fsm_finished <= 0;
 					wren <= 0;
-					//rden <= 0;
+
 					wait_count <= 2'b0;
 					
 					iterator <= 8'h00;
@@ -155,39 +155,37 @@ module task2_swap_ij_fsm
 				WAIT_START:
 				begin
 					wren <= 0;
-					//rden <= 0;
-					wait_count <= 2'b0;			// may be redundant
+
+					wait_count <= 2'b0;			
 				end
 				
 				COPY_I:
 				begin
-					//saved_value_i <= q;
 					iterator <= iterator_i;
 					wren <= 0;
-					//rden <= 1;
+
 					wait_count <= wait_count + 8'h01;
 				end
 				WAIT_COPY_I:
 				begin
 					saved_value_i <= q;
 					iterator <= iterator_i;    // may be redundant
-					saved_value_i <= q;			// may be redundant
+
 					wait_count <= 2'b0;
 				end
 
 				COPY_J:
 				begin
-					//saved_value_j <= q;
 					iterator <= iterator_j;
 					wren <= 0;
-					//rden <= 1;
+
 					wait_count <= wait_count + 8'h01;
 				end
 				WAIT_COPY_J:
 				begin
 					saved_value_j <= q;
 					iterator <= iterator_j;    // may be redundant
-					saved_value_j <= q;			// may be redundant
+
 					wait_count <= 2'b0;
 				end
 
@@ -196,13 +194,12 @@ module task2_swap_ij_fsm
 					out_value <= saved_value_j;
 					iterator <= iterator_i;
 					wren <= 1;
-					//rden <= 1;
+
 					wait_count <= wait_count + 8'h01;
 				end
 				WAIT_SWAP_I:
 				begin
-					//out_value <= saved_value_j;			// may be redundant
-					iterator <= iterator_i;					// may be redundant
+					iterator <= iterator_i;		// may be redundant
 					wren <= 0;	
 					wait_count <= 2'b0;
 				end
@@ -212,13 +209,12 @@ module task2_swap_ij_fsm
 					out_value <= saved_value_i;
 					iterator <= iterator_j;
 					wren <= 1;
-					//rden <= 1;
+
 					wait_count <= wait_count + 8'h01;
 				end
 				WAIT_SWAP_J:
 				begin
-					//out_value <= saved_value_i;			// may be redundant
-					iterator <= iterator_j;					// may be redundant
+					iterator <= iterator_j;		// may be redundant
 					wren <= 0;
 					wait_count <= 2'b0;
 				end
@@ -227,7 +223,7 @@ module task2_swap_ij_fsm
 				begin
 					fsm_finished <= 1;
 					wren <= 0;
-					//rden <= 0;
+
 					wait_count <= 2'b0;
 				end
 				

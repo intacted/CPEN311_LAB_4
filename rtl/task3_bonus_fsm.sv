@@ -15,7 +15,7 @@ module task3_bonus_fsm
 	logic wren1;
 	
 	logic [7:0] key1 [2:0];
-	assign key1[2:0] = '{secret_key[7:0],secret_key[15:8],secret_key[23:16]}; //'{secret_key[23:16],secret_key[15:8],secret_key[7:0]};
+	assign key1[2:0] = '{secret_key[7:0],secret_key[15:8],secret_key[23:16]}; 
 	
 	logic failed_decrypt1, done_decrypt1, reset_decryption1, start_decryption1;
 							
@@ -35,7 +35,7 @@ module task3_bonus_fsm
 		.done_decrypt(done_decrypt1)
 	);
 	
-	s_memory output_to_S1(
+	s_memory output_to_S(
 		.address(iterator1),
 		.clock(clk),         
 		.data(out_value1),		

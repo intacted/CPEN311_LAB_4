@@ -26,7 +26,7 @@ module task2a_fsm
 							output logic finish_FSM_1
 						);
 									
-	logic [7:0] iterator_i, iterator_j, iterator_k;		
+	logic [7:0] iterator_i, iterator_j;		
 	logic [1:0] wait_count;	
 	parameter WAIT_STATE_AMOUNT = 2;
 	parameter END_OF_MSG = 8'hFF;	

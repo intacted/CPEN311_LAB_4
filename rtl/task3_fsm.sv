@@ -6,6 +6,7 @@ module task3_fsm
                output logic [7:0] iterator, 
 					output logic [23:0] secret_key,
 					output logic [7:0] out_value,
+					output logic [1:0] status,
 					output logic wren
 				);
 				
@@ -15,7 +16,7 @@ module task3_fsm
 	logic [1:0] wait_count;	
 
 	logic [7:0] key [2:0];
-	assign key[2:0] = '{secret_key[7:0],secret_key[15:8],secret_key[23:16]}; //'{secret_key[23:16],secret_key[15:8],secret_key[7:0]};
+	assign key[2:0] = '{secret_key[7:0],secret_key[15:8],secret_key[23:16]}; 
 	
 	logic failed_decrypt, done_decrypt, reset_decryption, start_decryption;
 							
@@ -34,17 +35,6 @@ module task3_fsm
 		.failed_decrypt(failed_decrypt),
 		.done_decrypt(done_decrypt)
 	);
-	
-	/*
-	mux_one_hot_select #(BIT_WIDTH 8, INPUT_NUMBER 2) iterator_selector
-	(	// Inputs
-		.select({request_iterator_loop_2_flag, request_iterator_main_loop_flag}),
-		.a('{requested_iterator_loop_2,requested_iterator_main_loop}),
-		
-		// Outputs 
-		.out(iterator)
-	);
-	*/
 				 	 
 	// Defining states
 	enum int unsigned { 
@@ -77,12 +67,9 @@ module task3_fsm
 				
 				DECRYPT_KEY:
 				begin
-					//next_state = /*finished ? COMPLETED_DECRYPTION :*/ (secret_key == MAX_KEY) ? FINISH : ITERATE_KEY;
-					
-					//next_state = (failed_decrypt === 1 || done_decrypt == 1) ? ( (secret_key === MAX_KEY) ? FINISH : ITERATE_KEY ) : DECRYPT_KEY;
-					if (done_decrypt === 1)
+					if (done_decrypt === 1)	// If the message is completed without a single failed letter, then decryption was successful
 						next_state = FINISH;
-					else if (failed_decrypt === 1)// || done_decrypt == 1)
+					else if (failed_decrypt === 1)
 						next_state = (secret_key === MAX_KEY) ? FINISH : ITERATE_KEY;
 					else
 						next_state = DECRYPT_KEY;
@@ -104,12 +91,14 @@ module task3_fsm
 		begin
 			state <= START;
 
-			secret_key <= 24'h000_000;			// maybe change formatting of secret_key
+			secret_key <= 24'h000_000;			
 			
 			start_decryption <= 1'b0;
 			reset_decryption <= 1'b1;
 			
 			wait_count <= 2'b0;
+			
+			status <= 2'b00;	// operating
 		end
 		
 		// If not resetting, normal operation
@@ -118,12 +107,14 @@ module task3_fsm
 			case(state)
 				START:
 				begin
-					secret_key <= 24'h000_000;			// maybe change formatting of secret_key
+					secret_key <= 24'h000_000;			
 
 					start_decryption <= 1'b0;
 					reset_decryption <= 1'b1;
 					
 					wait_count <= 2'b0;
+					
+					status <= 2'b00;	// operating
 				end
 				
 				ITERATE_KEY:
@@ -150,7 +141,11 @@ module task3_fsm
 				
 				FINISH:
 				begin
-					//
+					// No further steps are necessary 
+					if (failed_decrypt)
+						status <= 2'b01;	// failed
+					else
+						status <= 2'b10;	// success
 				end
 			endcase
 

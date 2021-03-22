@@ -32,7 +32,7 @@ module task2b_fsm
 	parameter KEY_LENGTH = 3;
 	
 	// RAM and ROM
-	logic [7:0] f, f_iterator; 
+	logic [7:0] f_iterator; 
 	assign f_iterator = saved_value_i + saved_value_j;
 	
 	logic [7:0] data_d, q_m;
@@ -161,6 +161,8 @@ task2_swap_ij_fsm swap_fsm3
 			
 			failed_decrypt <= 0;
 			done_decrypt <= 0;
+
+			wren_d <= 1'b0;	
 		end
 		
 		// If not resetting, normal operation
@@ -184,6 +186,8 @@ task2_swap_ij_fsm swap_fsm3
 					start_swap <= 1'b0;
 					
 					data_d <= 8'h00;
+
+					wren_d <= 1'b0;	
 				end
 				
 				ITERATE_I:

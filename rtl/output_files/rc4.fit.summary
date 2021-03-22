@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sun Mar 21 12:47:49 2021
+Fitter Status : Successful - Mon Mar 22 02:50:16 2021
 Quartus II 64-Bit Version : 14.1.0 Build 186 12/03/2014 SJ Web Edition
 Revision Name : rc4
 Top-level Entity Name : ksa
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 403 / 32,070 ( 1 % )
-Total registers : 498
+Logic utilization (in ALMs) : 405 / 32,070 ( 1 % )
+Total registers : 515
 Total pins : 69 / 457 ( 15 % )
 Total virtual pins : 0
 Total block memory bits : 2,560 / 4,065,280 ( < 1 % )

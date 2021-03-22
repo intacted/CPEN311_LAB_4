@@ -24,7 +24,7 @@ module ksa(
 	logic clk, reset_n;										
 
    assign clk = CLOCK_50;
-   assign reset_n = KEY[3]; // ? 1'b1 : 1'b0 ;
+   assign reset_n = KEY[3];
 	
 	/*
 	// TASK 3 WITH BONUS CODE
@@ -43,6 +43,7 @@ module ksa(
 	// TASK 3 CODE
 	logic [7:0] iterator, q;
 	logic [7:0] out_value;
+	logic [1:0] completion_status;
 	logic wren;	
 	
 	logic [23:0] secret_key;
@@ -58,6 +59,7 @@ module ksa(
 		.iterator(iterator),
 		.secret_key(secret_key),
 		.out_value(out_value),
+		.status(completion_status),
 		.wren(wren)
 	);
 	
@@ -68,6 +70,8 @@ module ksa(
 		.wren(wren),
 		.q(q)
 	);
+	
+	assign LEDR[1:0] = completion_status;
 	
 	/*
 	// TASK 2 CODE
